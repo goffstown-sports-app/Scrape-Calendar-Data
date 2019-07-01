@@ -125,4 +125,4 @@ def cleaning_response(json_data, day, month, year):
 
 
 # Testing:
-print(cleaning_response(get_events_for_day(3, 6, 2019), 3, 6, 2019))
+# print(cleaning_response(get_events_for_day(3, 6, 2019), 3, 6, 2019))
