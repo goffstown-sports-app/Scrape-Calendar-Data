@@ -40,3 +40,6 @@ def get_events_for_day(day, month, year):
     resp = s.send(prepped)
     respJson = json.loads(resp.content)
     return respJson
+
+# Testing:
+# print(get_events_for_day(6, 6, 2019))
