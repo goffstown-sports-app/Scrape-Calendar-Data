@@ -22,9 +22,7 @@ def init_field_information_section(list_of_field_names):
     child_ref.set({
         "events-so-far": 0,
         "total-events-today": 0,
-        "total-events-today-list": [],
         "active-events": 0,
-        "active-events-list": []
     })
     for field in list_of_field_names:
         field_ref = ref.child("field-status/" + field)
