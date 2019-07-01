@@ -60,7 +60,7 @@ def cleaning_response(json_data, day, month, year):
     # Type Checking:
     if json_data == None:
         return None
-    else
+    else:
         UF.check_type(json_data, "list")
         UF.check_type(day, "int")
         UF.check_type(month, "int")
