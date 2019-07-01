@@ -37,10 +37,10 @@ def init_field_information_section(list_of_field_names):
 
 
 # Testing:
-init_field_information_section([
-    "softball-field",
-    "baseball-field",
-    "gym",
-    "football-field",
-    "jv-field"
-])
+# init_field_information_section([
+#     "softball-field",
+#     "baseball-field",
+#     "gym",
+#     "football-field",
+#     "jv-field"
+# ])
