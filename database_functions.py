@@ -44,3 +44,6 @@ def init_field_information_section(list_of_field_names):
 #     "football-field",
 #     "jv-field"
 # ])
+
+
+def update_database()
