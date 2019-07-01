@@ -39,7 +39,13 @@ def get_events_for_day(day, month, year):
     prepped = s.prepare_request(req)
     resp = s.send(prepped)
     respJson = json.loads(resp.content)
-    return respJson
+    if len(respJson) == 0:
+        return None
+    else:
+        return respJson
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))
+
+
+        
