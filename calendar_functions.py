@@ -48,14 +48,20 @@ def get_events_for_day(day, month, year):
 # print(get_events_for_day(6, 6, 2019))
 
 
-def cleaning_response(json_data):
+def cleaning_response(json_data, day, month, year):
     """
     Will clean the json response from the website.
     :param json_data: json response from the calendarAjax file
+    :param day: day that was queried (int)
+    :param month: month that was queried (int)
+    :param year: year that was queried (int)
     :return: cleaned data (list)
     """
     # Type Checking:
     UF.check_type(json_data, "list")
+    UF.check_type(day, "int")
+    UF.check_type(month, "int")
+    UF.check_type(year, "int")
     
     #  Cleaning Data:
     if len(json_data) == 0:
@@ -64,7 +70,7 @@ def cleaning_response(json_data):
         event_amount = 0
         clean_events = []
         for event in json_data:
-            event_number += 1
+            event_amount += 1
             if event["isCancelled"] == 0:
                 cancelled = False
             elif event["isCancelled"] == 1:
@@ -73,10 +79,10 @@ def cleaning_response(json_data):
                 gender = "m"
             elif "girls" in event["theTitle"].lower():
                 gender = "g"
-            if "varsity" in event["theTitle"].lower():
-                varsity = True
-            elif "junior varsity" in event["theTitle"].lower():
+            if "junior" in event["theTitle"].lower() and "varsity" in event["theTitle"]:
                 varsity = False
+            elif "varsity" in event["theTitle"].lower():
+                varsity = True
             if "middle" in event["theTitle"].lower():
                 ghs_sport = False
             elif "middle" not in event["theTitle"].lower():
@@ -88,27 +94,32 @@ def cleaning_response(json_data):
             location = event["thePlace"].strip("@").strip()
             thedate_elements = event["thedate"].split("vs")
             normal_time = thedate_elements[0].strip("(H)").strip("(A)").strip()
-            datetime_from = UF.normal_time_to_datetime(normal_time, day, month, year)
-            hour = datetime_from.hour
+            datetime_form = UF.normal_time_to_datetime(normal_time, day, month, year)
+            hour = datetime_form.hour
             minute = datetime_form.minute
             away_team_name = thedate_elements[1].strip()
-            sport_name = event["theTitle"].strip("Boys").strip("Girls").strip("Junior").strip("Varsity").strip("Middle").strip()
+            thetitle_elements = event["theTitle"].split(" ")
+            last_two_items = thetitle_elements[-2:len(thetitle_elements)]
+            if "varsity" == last_two_items[0].lower():
+                sport_name = last_two_items[1]
+            else:
+                sport_name = " ".join(last_two_items)
             event_dict = {
                 "gender": gender,
                 "varsity": varsity,
                 "ghs_sport": ghs_sport,
                 "home": home,
                 "event_location": location,
-                "start-time-(nomral)": normal_time,
+                "start-time-(normal)": normal_time,
                 "stat-time-(datetime)": datetime_form,
                 "hour": hour,  # Military time
                 "minute": minute, # Military time
                 "away_team_name": away_team_name,
                 "sport": sport_name,
             }
-            clean_event.append(event_dict)
-        return clean_event
+            clean_events.append(event_dict)
+        return clean_events
+
 
 # Testing:
-# print(cleaning_response(get_events_for_day(6, 6, 2019)))
-    
+# print(cleaning_response(get_events_for_day(6, 6, 2019), 6, 6, 2019))
