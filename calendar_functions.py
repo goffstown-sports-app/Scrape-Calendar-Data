@@ -108,3 +108,7 @@ def cleaning_response(json_data):
             }
             clean_event.append(event_dict)
         return clean_event
+
+# Testing:
+# print(cleaning_response(get_events_for_day(6, 6, 2019)))
+    
