@@ -116,7 +116,7 @@ def cleaning_response(json_data, day, month, year):
                     "start-time-(normal)": normal_time,
                     "stat-time-(datetime)": datetime_form,
                     "hour": hour,  # Military time
-                    "minute": minute, # Military time
+                    "minute": minute,  # Military time
                     "away_team_name": away_team_name,
                     "sport": sport_name,
                 }
