@@ -41,8 +41,7 @@ def get_events_for_day(day, month, year):
     respJson = json.loads(resp.content)
     if len(respJson) == 0:
         return None
-    else:
-        return respJson
+    return respJson
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))
@@ -119,6 +118,7 @@ def cleaning_response(json_data, day, month, year):
                     "minute": minute,  # Military time
                     "away_team_name": away_team_name,
                     "sport": sport_name,
+                    "cancelled": cancelled
                 }
                 clean_events.append(event_dict)
             return clean_events
