@@ -39,11 +39,25 @@ def init_field_information_section(list_of_field_names):
 # Testing:
 # init_field_information_section([
 #     "softball-field",
-#     "baseball-field",
 #     "gym",
 #     "football-field",
 #     "jv-field"
 # ])
 
 
-def update_database()
+def update_database(cleaned_data):
+    """
+    Will update the database with information from the calendar.
+    :param cleaned_data: clean data from the website
+    :return: none
+    """
+    football_field = []
+    gym = []
+    softball_field = []
+    for event in cleaned_data:
+        if "gym" in event["location"].lower() and "ghs" in event["location"].lower() and event["home"]:
+            gym.append(event)
+        elif "grizzles" in event["location"].lower() and "field" in event["location"].lower() and event["home"]:
+            football_field.append(event)
+        elif "ghs" in event["location"].lower() and "softball" in event["location"].lower() and event["home"]:
+            softball_field.append(event)
