@@ -30,7 +30,6 @@ def init_field_information_section(list_of_field_names):
             "last-update": str(datetime.now()),
             "sport": "",
             "start-time": "00:00:00",
-            "end-time": "00:00:00",
             "away-team-name": "",
             "varsity-sport": False
         })
