@@ -17,7 +17,7 @@ def init_field_information_section(list_of_field_names):
     # Firebase interactions:
     cred = credentials.Certificate("firestore_creds.json")
     firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
-    ref = db.reference("field_information")
+    ref = db.reference("field-information")
     child_ref = ref.child("general-information")
     child_ref.set({
         "events-so-far": 0,
