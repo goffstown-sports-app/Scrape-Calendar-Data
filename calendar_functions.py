@@ -112,8 +112,8 @@ def cleaning_response(json_data, day, month, year):
                     "ghs_sport": ghs_sport,
                     "home": home,
                     "event_location": location,
-                    "start-time-(normal)": normal_time,
-                    "stat-time-(datetime)": datetime_form,
+                    "start_time_(normal)": normal_time,
+                    "stat_time_(datetime)": datetime_form,
                     "hour": hour,  # Military time
                     "minute": minute,  # Military time
                     "away_team_name": away_team_name,
