@@ -50,13 +50,30 @@ def update_database(cleaned_data):
     :param cleaned_data: clean data from the website
     :return: none
     """
-    football_field = []
-    gym = []
-    softball_field = []
     for event in cleaned_data:
-        if "gym" in event["location"].lower() and "ghs" in event["location"].lower() and event["home"]:
-            gym.append(event)
-        elif "grizzles" in event["location"].lower() and "field" in event["location"].lower() and event["home"]:
-            football_field.append(event)
-        elif "ghs" in event["location"].lower() and "softball" in event["location"].lower() and event["home"]:
-            softball_field.append(event)
+        current_hour = datetime.now().hour
+        event_hour = event["hour"]
+        if current_hour == event_hour:
+            if "gym" in event["location"].lower() and "ghs" in event["location"].lower() and event["home"]:
+                field_name = "gym"
+            elif "grizzles" in event["location"].lower() and "field" in event["location"].lower() and event["home"]:
+                field_name = "football-field"
+            elif "ghs" in event["location"].lower() and "softball" in event["location"].lower() and event["home"]:
+                field_name = "softball-field"
+            try:
+                cred = credentials.Certificate("firestore_creds.json")
+                firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
+                ref = db.reference("field_information")
+                child_ref = ref.child("field-information/" + field_name)
+                child_ref.set({
+                "last-update": str(datetime.now()),
+                "sport": event["sport"],
+                "start-time": event["start-time-(normal)"],
+                "away-team-name": event["away_team_name"],
+                "varsity-sport": event["varsity"]
+                })
+            except NameError:
+                pass
+
+
+
