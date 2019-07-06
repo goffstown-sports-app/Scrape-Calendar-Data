@@ -2,6 +2,7 @@ import unittest
 import utility_functions as UF
 from datetime import datetime
 
+
 class TravisTests(unittest.TestCase):
     """
     Will run unittests for functions.
