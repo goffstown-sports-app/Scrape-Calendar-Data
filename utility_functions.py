@@ -25,6 +25,8 @@ def check_type(item, expected_type):
         pass
     elif "datetime" in expected_type.lower() and item_type == "<class 'datetime.datetime'>":
         pass
+    elif "none" in expected_type.lower() and item_type == "<class 'NoneType'>":
+        pass
     else:
         raise Exception("{a} isn't a {b}".format(a=object, b=expected_type))
     return item_type
@@ -56,7 +58,7 @@ def normal_time_to_datetime(normal_time, day, month, year):
     hour = int(time_elements_strs[0])
     minute = int(time_elements_strs[1])
     if "pm" in normal_time.lower():
-        hour += 10
+        hour += 12
     iso_version = datetime(year, month, day, hour, minute)
     return iso_version
 
