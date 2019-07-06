@@ -48,7 +48,7 @@ class TravisTests(unittest.TestCase):
         self.assertEqual(pm_test.year, 2019)
         self.assertEqual(pm_test.month, 9)
         self.assertEqual(pm_test.day, 4)
-        self.assertEqual(pm_test.hour, 17)
+        self.assertEqual(pm_test.hour, 19)
         self.assertEqual(pm_test.minute, 45)
 
 
