@@ -15,8 +15,6 @@ def init_field_information_section(list_of_field_names):
     UF.check_type(list_of_field_names, "list")
 
     # Firebase interactions:
-    cred = credentials.Certificate("firestore_creds.json")
-    firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
     ref = db.reference("field-information")
     child_ref = ref.child("general-information")
     child_ref.set({
@@ -39,32 +37,33 @@ def init_field_information_section(list_of_field_names):
 # init_field_information_section([
 #     "softball-field",
 #     "gym",
-#     "football-field",
-#     "jv-field"
+#     "football-field"
 # ])
 
 
-def update_database(cleaned_data):
+def update_database(cleaned_data, current_hour):
     """
     Will update the database with information from the calendar.
     :param cleaned_data: clean data from the website
+    :param current_hour: the
     :return: none
     """
+    got_data = 0
     for event in cleaned_data:
-        current_hour = datetime.now().hour
         event_hour = event["hour"]
         if current_hour == event_hour:
             if "gym" in event["location"].lower() and "ghs" in event["location"].lower() and event["home"]:
                 field_name = "gym"
+                got_data += 1
             elif "grizzles" in event["location"].lower() and "field" in event["location"].lower() and event["home"]:
                 field_name = "football-field"
+                got_data += 1
             elif "ghs" in event["location"].lower() and "softball" in event["location"].lower() and event["home"]:
                 field_name = "softball-field"
+                got_data += 1
             try:
-                cred = credentials.Certificate("firestore_creds.json")
-                firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
                 ref = db.reference("field_information")
-                child_ref = ref.child("field-information/" + field_name)
+                child_ref = ref.child("field-status/" + field_name)
                 child_ref.set({
                 "last-update": str(datetime.now()),
                 "sport": event["sport"],
@@ -74,6 +73,7 @@ def update_database(cleaned_data):
                 })
             except NameError:
                 pass
-
-
-
+    if got_data == 0:
+        print("Nothing right now, database not updated")
+    else:
+        print("Updated database")
