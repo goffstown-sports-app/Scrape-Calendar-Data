@@ -23,7 +23,7 @@ def main():
         print(cleaned_response)
         if cleaned_response != None:
             hour = int(datetime_now.hour)
-            DF.update_database(cleaned_response, 18)
+            DF.update_database(cleaned_response, hour)
         elif cleaned_response == None:
             print("Nothing right now, database not updated")
         sleep(180)
