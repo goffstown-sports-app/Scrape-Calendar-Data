@@ -65,11 +65,11 @@ def update_database(cleaned_data, current_hour):
                 ref = db.reference("field_information")
                 child_ref = ref.child("field-status/" + field_name)
                 child_ref.set({
-                "last-update": str(datetime.now()),
-                "sport": event["sport"],
-                "start-time": event["start-time-(normal)"],
-                "away-team-name": event["away_team_name"],
-                "varsity-sport": event["varsity"]
+                    "last-update": str(datetime.now()),
+                    "sport": event["sport"],
+                    "start-time": event["start-time-(normal)"],
+                    "away-team-name": event["away_team_name"],
+                    "varsity-sport": event["varsity"]
                 })
             except NameError:
                 pass
