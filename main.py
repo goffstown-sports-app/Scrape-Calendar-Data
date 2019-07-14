@@ -17,15 +17,49 @@ def main():
         day = int(datetime_now.day)
         month = int(datetime_now.month)
         year = int(datetime_now.year)
+        hour = 0
+        minute = 0
         inital_response = CF.get_events_for_day(day, month, year)
-        print(inital_response)
         cleaned_response = CF.cleaning_response(inital_response, day, month, year)
-        print(cleaned_response)
+        if hour == 0 and minute <= 3:
+            DF.init_database([
+                "V-M-Soccer",
+                "JV-M-Soccer",
+                "V-F-Soccer",
+                "JV-F-Soccer",
+                "V-M-Football",
+                "JV-M-Football",
+                "V-M-Baseball",
+                "JV-M-Baseball",
+                "V-F-Softball",
+                "JV-F-Softball",
+                "V-F-Field_Hockey",
+                "JV-F-Field_Hockey",
+                "V-M-Volleyball",
+                "JV-M-Volleyball",
+                "V-F-Volleyball",
+                "JV-F-Volleyball",
+                "V-M-Basketball",
+                "JV-M-Basketball",
+                "V-F-Basketball",
+                "JV-F-Basketball",
+                "V-M-Lacrosse",
+                "JV-M-Lacrosse",
+                "V-F-Lacrosse",
+                "JV-F-Lacrosse"
+            ])
+            DF.init_calendar_section()
+            DF.init_field_information_section([
+                "softball-field",
+                "gym",
+                "football-field"
+            ])
         if cleaned_response != None:
-            hour = int(datetime_now.hour)
             DF.update_database(cleaned_response, hour)
-        elif cleaned_response == None:
-            print("Nothing right now, database not updated")
+            DF.update_calendar_section(cleaned_response)
+            print("Updated database\nNext check in 3 min\n")
+        else:
+            print("Didn't update database\nNext check in 3 min\n")
         sleep(180)
 
 
