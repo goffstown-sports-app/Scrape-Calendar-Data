@@ -73,7 +73,112 @@ def update_database(cleaned_data, current_hour):
                 })
             except NameError:
                 pass
-    if got_data == 0:
-        print("Nothing right now, database not updated")
-    else:
-        print("Updated database")
+
+
+def init_calendar_section():
+    """
+    Initialize the calendar section of the database
+    :return: none
+    """
+    ref = db.reference("calendar")
+    child_ref = ref.child("tday-information")
+    child_ref.set({"number-of-events": 0})
+    for i in range(20):
+        child_ref2 = ref.child("tday-events/event" + str(i))
+        child_ref2.set({})
+
+
+
+# Testing:
+# init_calendar_section()
+
+
+def update_calendar_section(list_of_events):
+    """
+    Update the database for the calendar section
+    :param list_of_events: list of events for the day.
+    :return: none
+    """
+    ref = db.reference("calendar")
+    events = 0
+    for event in list_of_events:
+        events += 1
+        child_ref = ref.child("tday-events/event" + str(events))
+        child_ref.set({
+            "location": event["location"],
+            "sport": event["sport"],
+            "start-time": event["start-time-(normal)"],
+            "cancelled": event["cancelled"],
+            "home": event["home"],
+            "away-team": event["away_team_name"],
+            "varsity": event["varsity"],
+            "gender": event["gender"]
+        })
+    child_ref2 = ref.child("tday-information")
+    child_ref2.set({"number-of-events": len(list_of_events)})
+
+
+def init_database(list_of_sports):
+    """
+    Initializes the firebase realtime database
+    :param list_of_sports: list of supported sports. Each sport should be marked like "V-M-Sport"
+    :return: none
+    """
+    # Check types:
+    UF.check_type(list_of_sports, "list")
+    for sport in list_of_sports:
+        items = sport.split("-")
+        if len(items) != 3:
+            raise Exception("It seems as though the sports came in wrong from the init_database function")
+        if items[0].lower() != "v" and items[0].lower() != "jv":
+            raise Exception("It seems as though the varsity sports came in wrong for the init_database function")
+        if items[1].lower() != "f" and items[1].lower() != "m":
+            raise Exception("Item seems as though the gender came in wrong for the init_database function")
+
+    # Firestore interactions:
+    ref = db.reference("scores")
+    for sport in list_of_sports:
+        items = sport.split("-")
+        if items[0].lower() == "v":
+            child_name = "varsity-scores/" + items[1].upper() + "-" + items[2].lower()
+        else:
+            child_name = "jv-scores/" + items[1].upper() + "-" + items[2].lower()
+        child_ref = ref.child(child_name)
+        child_ref.set({
+            "home-score": 0,
+            "away-score": 0,
+            "game-time": "00:00:00",
+            "period": 0,
+            "away-team-name": "",
+            "event-start": "",
+            "event-end": ""
+        })
+
+
+# Testing:
+# init_database([
+#     "V-M-Soccer",
+#     "JV-M-Soccer",
+#     "V-F-Soccer",
+#     "JV-F-Soccer",
+#     "V-M-Football",
+#     "JV-M-Football",
+#     "V-M-Baseball",
+#     "JV-M-Baseball",
+#     "V-F-Softball",
+#     "JV-F-Softball",
+#     "V-F-Field_Hockey",
+#     "JV-F-Field_Hockey",
+#     "V-M-Volleyball",
+#     "JV-M-Volleyball",
+#     "V-F-Volleyball",
+#     "JV-F-Volleyball",
+#     "V-M-Basketball",
+#     "JV-M-Basketball",
+#     "V-F-Basketball",
+#     "JV-F-Basketball",
+#     "V-M-Lacrosse",
+#     "JV-M-Lacrosse",
+#     "V-F-Lacrosse",
+#     "JV-F-Lacrosse"
+# ])
