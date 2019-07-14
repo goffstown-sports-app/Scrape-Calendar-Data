@@ -4,6 +4,7 @@ from datetime import datetime
 from time import sleep
 import firebase_admin
 from firebase_admin import credentials
+import json
 
 
 def main():
@@ -54,13 +55,25 @@ def main():
                 "gym",
                 "football-field"
             ])
+        first_time_run = 0
         if cleaned_response != None:
             DF.update_database(cleaned_response, hour)
             DF.update_calendar_section(cleaned_response)
             print("Updated database\nNext check in 3 min\n")
+            first_time_run += 1
+            saved_description = "wrote data"
         else:
             print("Didn't update database\nNext check in 3 min\n")
-        sleep(180)
+            saved_description = "nothing"
+            first_time_run += 1
+        if first_time_run == 0:
+            with open("request_data.json", "w") as request_data:
+                json.dump([], request_data)
+        with open("request_data.json", "a") as request_data:
+            json.dump([str(datetime_now), saved_description], request_data)
+        for i in range(180):
+            sleep(1)
+            print(180 - i, "seconds till next request")
 
-
+if
 main()
