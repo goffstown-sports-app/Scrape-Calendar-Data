@@ -75,5 +75,6 @@ def main():
             sleep(1)
             print(180 - i, "seconds till next request")
 
-if
-main()
+
+if __name__ == "__main__":
+    main()
