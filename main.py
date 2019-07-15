@@ -5,6 +5,7 @@ from time import sleep
 import firebase_admin
 from firebase_admin import credentials
 import json
+from os import system
 
 
 def main():
@@ -55,6 +56,7 @@ def main():
                 "gym",
                 "football-field"
             ])
+            system("rm request_data.json")
         first_time_run = 0
         if cleaned_response != None:
             DF.update_database(cleaned_response, hour)
