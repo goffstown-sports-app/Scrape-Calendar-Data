@@ -186,9 +186,10 @@ def init_database(list_of_sports):
 # ])
 
 
-def update_pulse():
+def update_pulse(consecutive_number_of_requests):
     """
     Update the pulse
+    :param consecutive_number_of_requests: the number of requests
     :return: none
     """
     current_time = str(datetime.now())
@@ -196,4 +197,7 @@ def update_pulse():
     child_ref = ref.child("pulses")
     child_ref.set({
         "Scrape-Calendar-Pulse": current_time
+    })
+    ref.child("pulse-numbers").set({
+        "Scrape-Calendar-Pulse-Amount (Consecutive)": consecutive_number_of_requests
     })
