@@ -23,7 +23,6 @@ def init_field_information_section(list_of_field_names):
     for field in list_of_field_names:
         field_ref = ref.child("field-status/" + field)
         field_ref.set({
-            "last-update": str(datetime.now()),
             "sport": "",
             "start-time": "00:00:00",
             "away-team-name": "",
@@ -60,10 +59,9 @@ def update_database(cleaned_data, current_hour):
                 field_name = "softball-field"
                 got_data += 1
             try:
-                ref = db.reference("field_information")
+                ref = db.reference("field-information")
                 child_ref = ref.child("field-status/" + field_name)
                 child_ref.set({
-                    "last-update": str(datetime.now()),
                     "sport": event["sport"],
                     "start-time": event["start-time-(normal)"],
                     "away-team-name": event["away_team_name"],
@@ -151,6 +149,12 @@ def init_database(list_of_sports):
             "event-start": "",
             "event-end": ""
         })
+    ref2 = db.reference("db-info")
+    child_ref2 = ref2.child("pulse")
+    current_time = datetime.now()
+    child_ref2.set({
+        "pulse-time": str(current_time)
+    })
 
 
 # Testing:
@@ -180,3 +184,15 @@ def init_database(list_of_sports):
 #     "V-F-Lacrosse",
 #     "JV-F-Lacrosse"
 # ])
+
+def update_pulse():
+    """
+    Update the pulse
+    :return: none
+    """
+    current_time = str(datetime.now())
+    ref = db.reference("db-info")
+    child_ref = ref.child("pulse")
+    child_ref.set({
+        "pulse-time": current_time
+    })
