@@ -150,10 +150,10 @@ def init_database(list_of_sports):
             "event-end": ""
         })
     ref2 = db.reference("db-info")
-    child_ref2 = ref2.child("pulse")
+    child_ref2 = ref2.child("pulses")
     current_time = datetime.now()
     child_ref2.set({
-        "pulse-time": str(current_time)
+        "Scrape-Calendar-Pulse": str(current_time)
     })
 
 
@@ -185,6 +185,7 @@ def init_database(list_of_sports):
 #     "JV-F-Lacrosse"
 # ])
 
+
 def update_pulse():
     """
     Update the pulse
@@ -192,7 +193,7 @@ def update_pulse():
     """
     current_time = str(datetime.now())
     ref = db.reference("db-info")
-    child_ref = ref.child("pulse")
+    child_ref = ref.child("pulses")
     child_ref.set({
-        "pulse-time": current_time
+        "Scrape-Calendar-Pulse": current_time
     })
