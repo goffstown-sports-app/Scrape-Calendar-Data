@@ -14,8 +14,9 @@ def main():
     """
     cred = credentials.Certificate("firestore_creds.json")
     firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
+    number_of_requests = 1
     while True:
-        DF.update_pulse()
+        DF.update_pulse(number_of_requests)
         datetime_now = datetime.now()
         day = int(datetime_now.day)
         month = int(datetime_now.month)
@@ -58,6 +59,7 @@ def main():
                 "football-field"
             ])
             system("rm request_data.json")
+        print("")
         first_time_run = 0
         if cleaned_response != None:
             DF.update_database(cleaned_response, hour)
@@ -78,6 +80,7 @@ def main():
             sleep(1)
             print(180 - i, "seconds till next request")
         print("Making request")
+        number_of_requests += 1
 
 
 if __name__ == "__main__":
