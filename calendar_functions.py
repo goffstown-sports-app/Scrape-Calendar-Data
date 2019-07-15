@@ -38,10 +38,10 @@ def get_events_for_day(day, month, year):
     req = Request('POST', url, data=data, headers=headers)
     prepped = s.prepare_request(req)
     resp = s.send(prepped)
-    respJson = json.loads(resp.content.decode("utf-8"))
-    if len(respJson) == 0:
+    resp_json = json.loads(resp.content.decode("utf-8"))
+    if len(resp_json) == 0:
         return None
-    return respJson
+    return resp_json
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))
