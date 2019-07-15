@@ -77,6 +77,7 @@ def main():
         for i in range(180):
             sleep(1)
             print(180 - i, "seconds till next request")
+        print("Making request")
 
 
 if __name__ == "__main__":
