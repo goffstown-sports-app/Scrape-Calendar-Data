@@ -72,55 +72,62 @@ def cleaning_response(json_data, day, month, year):
         event_amount = 0
         clean_events = []
         for event in json_data:
-            event_amount += 1
-            if event["isCancelled"] == 0:
-                cancelled = False
-            elif event["isCancelled"] == 1:
-                cancelled = True
-            if "boys" in event["theTitle"].lower():
-                gender = "m"
-            elif "girls" in event["theTitle"].lower():
-                gender = "g"
-            if "junior" in event["theTitle"].lower() and "varsity" in event["theTitle"]:
-                varsity = False
-            elif "varsity" in event["theTitle"].lower():
-                varsity = True
-            if "middle" in event["theTitle"].lower():
-                ghs_sport = False
-            elif "middle" not in event["theTitle"].lower():
-                ghs_sport = True
-            if event["homeOrAway"] == 1:
-                home = True
-            elif event["homeOrAway"] == 0:
-                home = False
-            location = event["thePlace"].strip("@").strip()
-            thedate_elements = event["thedate"].split("vs")
-            normal_time = thedate_elements[0].strip("(H)").strip("(A)").strip()
-            datetime_form = UF.normal_time_to_datetime(normal_time, day, month, year)
-            hour = datetime_form.hour
-            minute = datetime_form.minute
-            away_team_name = thedate_elements[1].strip()
-            thetitle_elements = event["theTitle"].split(" ")
-            last_two_items = thetitle_elements[-2:len(thetitle_elements)]
-            if "varsity" == last_two_items[0].lower():
-                sport_name = last_two_items[1]
+            if "middle" in event["theTitle"].lower() and "school" in event["theTitle"].lower():
+                pass
+            elif "practice" in event["eventType"].lower() or "scrimmage" in event["eventType"].lower():
+                pass
             else:
-                sport_name = " ".join(last_two_items)
-            event_dict = {
-                "gender": gender,
-                "varsity": varsity,
-                "ghs_sport": ghs_sport,
-                "home": home,
-                "location": location,
-                "start-time-(normal)": normal_time,
-                "stat-time-(datetime)": datetime_form,
-                "hour": hour,  # Military time
-                "minute": minute,  # Military time
-                "away_team_name": away_team_name,
-                "sport": sport_name,
-                "cancelled": cancelled
-            }
-            clean_events.append(event_dict)
+                event_amount += 1
+                if event["isCancelled"] == 0:
+                    cancelled = False
+                elif event["isCancelled"] == 1:
+                    cancelled = True
+                if "boys" in event["theTitle"].lower():
+                    gender = "m"
+                elif "girls" in event["theTitle"].lower():
+                    gender = "g"
+                if "junior" in event["theTitle"].lower() and "varsity" in event["theTitle"]:
+                    varsity = False
+                elif "varsity" in event["theTitle"].lower():
+                    varsity = True
+                if "middle" in event["theTitle"].lower():
+                    ghs_sport = False
+                elif "middle" not in event["theTitle"].lower():
+                    ghs_sport = True
+                if event["homeOrAway"] == 1:
+                    home = True
+                elif event["homeOrAway"] == 0:
+                    home = False
+                location = event["thePlace"].strip("@").strip()
+                thedate_elements = event["thedate"].split("vs")
+                normal_time = thedate_elements[0].strip("(H)").strip("(A)").strip()
+                datetime_form = UF.normal_time_to_datetime(normal_time, day, month, year)
+                hour = datetime_form.hour
+                minute = datetime_form.minute
+                away_team_name = thedate_elements[1].strip()
+                thetitle_elements = event["theTitle"].split(" ")
+                last_two_items = thetitle_elements[-2:len(thetitle_elements)]
+                if "varsity" == last_two_items[0].lower():
+                    sport_name = last_two_items[1]
+                else:
+                    sport_name = " ".join(last_two_items)
+                event_dict = {
+                    "gender": gender,
+                    "varsity": varsity,
+                    "ghs_sport": ghs_sport,
+                    "home": home,
+                    "location": location,
+                    "start-time-(normal)": normal_time,
+                    "stat-time-(datetime)": datetime_form,
+                    "hour": hour,  # Military time
+                    "minute": minute,  # Military time
+                    "away_team_name": away_team_name,
+                    "sport": sport_name,
+                    "cancelled": cancelled
+                }
+                clean_events.append(event_dict)
+        if len(clean_events) == 0:
+            return None
         return clean_events
 
 
