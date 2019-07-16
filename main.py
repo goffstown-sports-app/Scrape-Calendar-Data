@@ -23,8 +23,8 @@ def main():
         year = int(datetime_now.year)
         hour = int(datetime_now.hour)
         minute = int(datetime_now.minute)
-        inital_response = CF.get_events_for_day(day, month, year)
-        cleaned_response = CF.cleaning_response(inital_response, day, month, year)
+        initial_response = CF.get_events_for_day(day, month, year)
+        cleaned_response = CF.cleaning_response(initial_response, day, month, year)
         if hour == 0 and minute <= 3:
             DF.init_database([
                 "V-M-Soccer",
