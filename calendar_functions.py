@@ -66,7 +66,7 @@ def cleaning_response(json_data, day, month, year):
     UF.check_type(year, "int")
 
     #  Cleaning Data:
-    if json_data == None:
+    if json_data is None:
         return None
     else:
         event_amount = 0
