@@ -28,7 +28,7 @@ def check_type(item, expected_type):
     elif "none" in expected_type.lower() and item_type == "<class 'NoneType'>":
         pass
     else:
-        raise Exception("{a} isn't a {b}".format(a=object, b=expected_type))
+        raise TypeError("{a} isn't a {b}".format(a=object, b=expected_type))
     return item_type
 
 
