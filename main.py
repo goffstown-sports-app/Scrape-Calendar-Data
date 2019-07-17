@@ -78,7 +78,9 @@ def main():
             json.dump([str(datetime_now), saved_description], request_data)
         for i in range(180):
             sleep(1)
+            print("")
             print(180 - i, "seconds till next request")
+            print("\n", number_of_requests)
         print("Making request")
         number_of_requests += 1
 
