@@ -80,7 +80,7 @@ def main():
             sleep(1)
             print("")
             print(180 - i, "seconds till next request")
-            print("\n", number_of_requests)
+            print("\nNumber of request:", number_of_requests)
         print("Making request")
         number_of_requests += 1
 
