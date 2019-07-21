@@ -80,14 +80,22 @@ def main():
                 json.dump([str(datetime_now), saved_description], request_data)
             for i in range(180):
                 sleep(1)
-                print("")
+                print("\n--------------------------------")
                 print(180 - i, "seconds till next request")
                 print("\nNumber of request:", number_of_requests)
+            for i in range(40):
+                print("\n")
             print("Making request")
             number_of_requests += 1
         except:
             print("Error in program.")
             print("Retrying")
+            for i in range(10):
+                sleep(1)
+                print("\n--------------------------------")
+                print(10 - i, "seconds till retry")
+            for i in range(40):
+                print("\n")
 
 
 if __name__ == "__main__":
