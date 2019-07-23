@@ -1,11 +1,12 @@
-import database_functions as DF
-import calendar_functions as CF
 from datetime import datetime
 from time import sleep
 import firebase_admin
 from firebase_admin import credentials
 import json
 from os import system
+
+import database as DF
+import calendar as CF
 
 
 def main():
