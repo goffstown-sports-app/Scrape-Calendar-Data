@@ -1,7 +1,7 @@
-import utility_functions as UF
 import requests
 import json
 
+import utility as UF
 
 def get_events_for_day(day, month, year):
     """
