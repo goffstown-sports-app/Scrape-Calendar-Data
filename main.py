@@ -5,8 +5,8 @@ from firebase_admin import credentials
 import json
 from os import system
 
-import database as DF
-import calendar as CF
+import database
+import calendar_actions as CA
 
 
 def main():
@@ -19,17 +19,17 @@ def main():
     number_of_requests = 1
     while True:
         try:
-            DF.update_pulse(number_of_requests)
+            database.update_pulse(number_of_requests)
             datetime_now = datetime.now()
             day = int(datetime_now.day)
             month = int(datetime_now.month)
             year = int(datetime_now.year)
             hour = int(datetime_now.hour)
             minute = int(datetime_now.minute)
-            initial_response = CF.get_events_for_day(day, month, year)
-            cleaned_response = CF.cleaning_response(initial_response, day, month, year)
+            initial_response = CA.get_events_for_day(day, month, year)
+            cleaned_response = CA.cleaning_response(initial_response, day, month, year)
             if hour == 0 and minute <= 3:
-                DF.init_database([
+                database.init_database([
                     "V-M-Soccer",
                     "JV-M-Soccer",
                     "V-F-Soccer",
@@ -55,8 +55,8 @@ def main():
                     "V-F-Lacrosse",
                     "JV-F-Lacrosse"
                 ])
-                DF.init_calendar_section()
-                DF.init_field_information_section([
+                database.init_calendar_section()
+                database.init_field_information_section([
                     "softball-field",
                     "gym",
                     "football-field"
@@ -65,8 +65,8 @@ def main():
             print("")
             first_time_run = 0
             if cleaned_response != None:
-                DF.update_database(cleaned_response, hour)
-                DF.update_calendar_section(cleaned_response)
+                database.update_database(cleaned_response, hour)
+                database.update_calendar_section(cleaned_response)
                 print("Updated database\nNext check in 3 min\n")
                 first_time_run += 1
                 saved_description = "wrote data"

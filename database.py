@@ -1,7 +1,7 @@
 from firebase_admin import db
 from datetime import datetime
 
-import utility as UF
+import utility as util
 
 
 def init_field_information_section(list_of_field_names):
@@ -11,7 +11,7 @@ def init_field_information_section(list_of_field_names):
     :return: none
     """
     # Type checking:
-    UF.check_type(list_of_field_names, "list")
+    util.check_type(list_of_field_names, "list")
 
     # Firebase interactions:
     ref = db.reference("field-information")
@@ -122,7 +122,7 @@ def init_database(list_of_sports):
     :return: none
     """
     # Check types:
-    UF.check_type(list_of_sports, "list")
+    util.check_type(list_of_sports, "list")
     for sport in list_of_sports:
         items = sport.split("-")
         if len(items) != 3:

@@ -1,8 +1,8 @@
 import datetime
 import unittest
 
-import utility as UF
-import calendar as CF
+import utility as util
+import calendar_actions as CA
 
 
 class UnitTest(unittest.TestCase):
@@ -18,14 +18,14 @@ class UnitTest(unittest.TestCase):
         """
         Tests the check_type function
         """
-        string_result = UF.check_type("", "string")
-        int_result = UF.check_type(0, "int")
-        float_result = UF.check_type(0.0, "float")
-        tuple_result = UF.check_type((), "tuple")
-        list_result = UF.check_type([], "list")
-        dict_result = UF.check_type({}, "dict")
-        bool_result = UF.check_type(True, "bool")
-        datetime_result = UF.check_type(datetime.datetime(2019, 6, 12), "datetime")
+        string_result = util.check_type("", "string")
+        int_result = util.check_type(0, "int")
+        float_result = util.check_type(0.0, "float")
+        tuple_result = util.check_type((), "tuple")
+        list_result = util.check_type([], "list")
+        dict_result = util.check_type({}, "dict")
+        bool_result = util.check_type(True, "bool")
+        datetime_result = util.check_type(datetime.datetime(2019, 6, 12), "datetime")
         self.assertEqual(string_result, "<class 'str'>")
         self.assertEqual(int_result, "<class 'int'>")
         self.assertEqual(float_result, "<class 'float'>")
@@ -39,8 +39,8 @@ class UnitTest(unittest.TestCase):
         """
         Tests th normal_time_to_ISO function
         """
-        am_test = UF.normal_time_to_datetime("5:23AM", 6, 2, 2019)
-        pm_test = UF.normal_time_to_datetime("7:45PM", 4, 9, 2019)
+        am_test = util.normal_time_to_datetime("5:23AM", 6, 2, 2019)
+        pm_test = util.normal_time_to_datetime("7:45PM", 4, 9, 2019)
         self.assertEqual(str(type(am_test)), "<class 'datetime.datetime'>")
         self.assertEqual(str(type(pm_test)), "<class 'datetime.datetime'>")
         self.assertEqual(am_test.year, 2019)
@@ -62,9 +62,9 @@ class UnitTest(unittest.TestCase):
         """
         Tests the get_events_for_day function
         """
-        single_content_response = CF.get_events_for_day(4, 6, 2019)
-        double_content_response = CF.get_events_for_day(6, 6, 2019)
-        zero_content_response = CF.get_events_for_day(8, 6, 2019)
+        single_content_response = CA.get_events_for_day(4, 6, 2019)
+        double_content_response = CA.get_events_for_day(6, 6, 2019)
+        zero_content_response = CA.get_events_for_day(8, 6, 2019)
 
         self.assertEqual(single_content_response, [{'isAuthorized': True, 'isCancelled': 0, 'Month': 6, 'theTitle': 'Boys Varsity Volleyball', 'eventid': 75486571, 'isPostponed': 0, 'thedate': '(H) 6:00PM vs Pinkerton Academy', 'homeOrAway': 1, 'postcancelled': '', 'eventType': 'home', 'Year': 2019, 'thePlace': '@ GHS Gymnasium', 'rescheddate': '', 'Day': 4, 'theEventTitle': 'NHIAA Playoff Quarterfinal'}])
 
@@ -76,9 +76,9 @@ class UnitTest(unittest.TestCase):
         """
         Testing the cleaning_response function
         """
-        single_content_response = CF.cleaning_response(CF.get_events_for_day(4, 6, 2019), 4, 6, 2019)
-        double_content_response = CF.cleaning_response(CF.get_events_for_day(6, 6, 2019), 6, 6, 2019)
-        zero_content_response = CF.cleaning_response(CF.get_events_for_day(8, 6, 2019), 8, 6, 2019)
+        single_content_response = CA.cleaning_response(CA.get_events_for_day(4, 6, 2019), 4, 6, 2019)
+        double_content_response = CA.cleaning_response(CA.get_events_for_day(6, 6, 2019), 6, 6, 2019)
+        zero_content_response = CA.cleaning_response(CA.get_events_for_day(8, 6, 2019), 8, 6, 2019)
 
         self.assertEqual(single_content_response, [{'gender': 'm', 'varsity': True, 'ghs_sport': True, 'home': True, 'location': 'GHS Gymnasium', 'start-time-(normal)': '6:00PM', 'stat-time-(datetime)': datetime.datetime(2019, 6, 4, 18, 0), 'hour': 18, 'minute': 0, 'away_team_name': 'Pinkerton Academy', 'sport': 'Volleyball', 'cancelled': False}])
 
