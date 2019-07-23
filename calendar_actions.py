@@ -1,7 +1,7 @@
 import requests
 import json
 
-import utility as UF
+import utility as util
 
 def get_events_for_day(day, month, year):
     """
@@ -12,9 +12,9 @@ def get_events_for_day(day, month, year):
     :return: events (list)
     """
     # Type checking:
-    UF.check_type(day, "int")
-    UF.check_type(month, "int")
-    UF.check_type(year, "int")
+    util.check_type(day, "int")
+    util.check_type(month, "int")
+    util.check_type(year, "int")
 
     # Querying information:
     data = 'CalMonth={m}&CalYear={y}&CalDay={d}'.format(m=month, d=day, y=year)
@@ -59,12 +59,12 @@ def cleaning_response(json_data, day, month, year):
     """
     # Type Checking:
     try:
-        UF.check_type(json_data, "list")
+        util.check_type(json_data, "list")
     except Exception:
-        UF.check_type(json_data, "none")
-    UF.check_type(day, "int")
-    UF.check_type(month, "int")
-    UF.check_type(year, "int")
+        util.check_type(json_data, "none")
+    util.check_type(day, "int")
+    util.check_type(month, "int")
+    util.check_type(year, "int")
 
     #  Cleaning Data:
     if json_data is None:
@@ -102,7 +102,7 @@ def cleaning_response(json_data, day, month, year):
                 location = event["thePlace"].strip("@").strip()
                 thedate_elements = event["thedate"].split("vs")
                 normal_time = thedate_elements[0].strip("(H)").strip("(A)").strip()
-                datetime_form = UF.normal_time_to_datetime(normal_time, day, month, year)
+                datetime_form = util.normal_time_to_datetime(normal_time, day, month, year)
                 hour = datetime_form.hour
                 minute = datetime_form.minute
                 away_team_name = thedate_elements[1].strip()
