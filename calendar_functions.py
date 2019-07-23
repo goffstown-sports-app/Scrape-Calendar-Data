@@ -1,5 +1,5 @@
 import utility_functions as UF
-from requests import Request, Session
+import requests
 import json
 
 
@@ -34,11 +34,12 @@ def get_events_for_day(day, month, year):
         'authority': 'goffstownathletics.com',
         'referer': 'https://goffstownathletics.com/main/calendar/',
     }
-    s = Session()
-    req = Request('POST', url, data=data, headers=headers)
-    prepped = s.prepare_request(req)
-    resp = s.send(prepped)
+    session = requests.Session()
+    req = requests.Request('POST', url, data=data, headers=headers)
+    prepped = session.prepare_request(req)
+    resp = session.send(prepped)
     resp_json = json.loads(resp.content.decode("utf-8"))
+    session.close()
     if len(resp_json) == 0:
         return None
     return resp_json
