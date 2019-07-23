@@ -1,10 +1,11 @@
-import unittest
-import utility_functions as UF
 import datetime
-import calendar_functions as CF
+import unittest
+
+import utility as UF
+import calendar as CF
 
 
-class TravisTests(unittest.TestCase):
+class UnitTest(unittest.TestCase):
     """
     Will run unittests for functions.
     """
@@ -59,7 +60,7 @@ class TravisTests(unittest.TestCase):
 
     def test_get_events_for_day(self):
         """
-        Tests the get_events_for_day function 
+        Tests the get_events_for_day function
         """
         single_content_response = CF.get_events_for_day(4, 6, 2019)
         double_content_response = CF.get_events_for_day(6, 6, 2019)
