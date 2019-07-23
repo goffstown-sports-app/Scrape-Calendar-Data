@@ -1,6 +1,7 @@
 from firebase_admin import db
-import utility_functions as UF
 from datetime import datetime
+
+import utility as UF
 
 
 def init_field_information_section(list_of_field_names):
