@@ -17,6 +17,8 @@ def main():
     cred = credentials.Certificate("firestore_creds.json")
     firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
     number_of_requests = 1
+    print("20 seconds till start")
+    sleep(20)
     while True:
         try:
             database.update_pulse(number_of_requests)
