@@ -3,7 +3,7 @@ import json
 
 import utility as util
 
-def get_events_for_day(day, month, year):
+def get_events_for_day(month, year):
     """
     Get event information for the events of the day
     :param day: day to query (int)
