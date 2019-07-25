@@ -48,7 +48,7 @@ def get_events_for_day(day, month, year):
 # print(get_events_for_day(6, 6, 2019))
 
 
-def cleaning_response(json_data, day, month, year):
+def cleaning_response(json_data, month, year):
     """
     Will clean the json response from the website.
     :param json_data: json response from the calendarAjax file
