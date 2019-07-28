@@ -15,7 +15,8 @@ def main():
     :return: none
     """
     cred = credentials.Certificate("firestore_creds.json")
-    firebase_admin.initialize_app(cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
+    firebase_admin.initialize_app(
+        cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
     number_of_requests = 1
     print("20 seconds till start")
     sleep(20)
@@ -29,7 +30,8 @@ def main():
             hour = int(datetime_now.hour)
             minute = int(datetime_now.minute)
             initial_response = CA.get_events_for_day(day, month, year)
-            cleaned_response = CA.cleaning_response(initial_response, day, month, year)
+            cleaned_response = CA.cleaning_response(
+                initial_response, day, month, year)
             if hour == 0 and minute <= 3:
                 database.init_database([
                     "V-M-Soccer",

@@ -3,6 +3,7 @@ import json
 
 import utility as util
 
+
 def get_events_for_day(day, month, year):
     """
     Get event information for the events of the day
@@ -101,8 +102,10 @@ def cleaning_response(json_data, day, month, year):
                     home = False
                 location = event["thePlace"].strip("@").strip()
                 thedate_elements = event["thedate"].split("vs")
-                normal_time = thedate_elements[0].strip("(H)").strip("(A)").strip()
-                datetime_form = util.normal_time_to_datetime(normal_time, day, month, year)
+                normal_time = thedate_elements[0].strip(
+                    "(H)").strip("(A)").strip()
+                datetime_form = util.normal_time_to_datetime(
+                    normal_time, day, month, year)
                 hour = datetime_form.hour
                 minute = datetime_form.minute
                 away_team_name = thedate_elements[1].strip()

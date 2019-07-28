@@ -85,7 +85,6 @@ def init_calendar_section():
         child_ref2.set({})
 
 
-
 # Testing:
 # init_calendar_section()
 
@@ -126,20 +125,25 @@ def init_database(list_of_sports):
     for sport in list_of_sports:
         items = sport.split("-")
         if len(items) != 3:
-            raise Exception("It seems as though the sports came in wrong from the init_database function")
+            raise Exception(
+                "It seems as though the sports came in wrong from the init_database function")
         if items[0].lower() != "v" and items[0].lower() != "jv":
-            raise Exception("It seems as though the varsity sports came in wrong for the init_database function")
+            raise Exception(
+                "It seems as though the varsity sports came in wrong for the init_database function")
         if items[1].lower() != "f" and items[1].lower() != "m":
-            raise Exception("Item seems as though the gender came in wrong for the init_database function")
+            raise Exception(
+                "Item seems as though the gender came in wrong for the init_database function")
 
     # Firestore interactions:
     ref = db.reference("scores")
     for sport in list_of_sports:
         items = sport.split("-")
         if items[0].lower() == "v":
-            child_name = "varsity-scores/" + items[1].upper() + "-" + items[2].lower()
+            child_name = "varsity-scores/" + \
+                items[1].upper() + "-" + items[2].lower()
         else:
-            child_name = "jv-scores/" + items[1].upper() + "-" + items[2].lower()
+            child_name = "jv-scores/" + \
+                items[1].upper() + "-" + items[2].lower()
         child_ref = ref.child(child_name)
         child_ref.set({
             "home-score": 0,
