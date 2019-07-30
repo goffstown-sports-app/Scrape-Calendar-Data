@@ -1,7 +1,8 @@
 import requests
 import json
 
-import utility as util
+from utils import datetime_utils
+from utils import generic
 
 
 def get_events_for_day(day, month, year):
@@ -13,9 +14,9 @@ def get_events_for_day(day, month, year):
     :return: events (list)
     """
     # Type checking:
-    util.check_type(day, "int")
-    util.check_type(month, "int")
-    util.check_type(year, "int")
+    generic.check_type(day, "int")
+    generic.check_type(month, "int")
+    generic.check_type(year, "int")
 
     # Querying information:
     data = 'CalMonth={m}&CalYear={y}&CalDay={d}'.format(m=month, d=day, y=year)
@@ -60,12 +61,12 @@ def cleaning_response(json_data, day, month, year):
     """
     # Type Checking:
     try:
-        util.check_type(json_data, "list")
+        generic.check_type(json_data, "list")
     except Exception:
-        util.check_type(json_data, "none")
-    util.check_type(day, "int")
-    util.check_type(month, "int")
-    util.check_type(year, "int")
+        generic.check_type(json_data, "none")
+    generic.check_type(day, "int")
+    generic.check_type(month, "int")
+    generic.check_type(year, "int")
 
     #  Cleaning Data:
     if json_data is None:
@@ -104,7 +105,7 @@ def cleaning_response(json_data, day, month, year):
                 thedate_elements = event["thedate"].split("vs")
                 normal_time = thedate_elements[0].strip(
                     "(H)").strip("(A)").strip()
-                datetime_form = util.normal_time_to_datetime(
+                datetime_form = datetime_utils.normal_time_to_datetime(
                     normal_time, day, month, year)
                 hour = datetime_form.hour
                 minute = datetime_form.minute
