@@ -1,5 +1,6 @@
 from firebase_admin import db
 from datetime import datetime
+from platform import uname, platform
 
 from utils import generic
 
@@ -199,10 +200,10 @@ def update_pulse(consecutive_number_of_requests):
     """
     current_time = str(datetime.now())
     ref = db.reference("db-info")
-    child_ref = ref.child("pulses")
+    child_ref = ref.child("pulses/Scrape-Calendar-Data")
     child_ref.set({
-        "Scrape-Calendar-Pulse": current_time
-    })
-    ref.child("pulse-numbers").set({
-        "Scrape-Calendar-Pulse-Amount (Consecutive)": consecutive_number_of_requests
+        "Pulse-Time": current_time,
+        "Pulse-Amount (Consecutive)": consecutive_number_of_requests,
+        "Pulse-Node": str(uname().node),
+        "Pulse-OS": str(platform())
     })
