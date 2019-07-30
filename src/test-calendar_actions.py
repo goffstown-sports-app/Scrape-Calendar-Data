@@ -1,63 +1,17 @@
+#
+# THIS IS HERE FOR A REASON. DON'T MOVE!!
+#
+
 import datetime
 import unittest
 
-import utility as util
 import calendar_actions as CA
 
 
 class UnitTest(unittest.TestCase):
     """
-    Will run unittests for functions.
+    Will run unittests for the calendar_actions.py file
     """
-
-    ###############################################
-    #Testing the functions in utility_functions.py#
-    ###############################################
-
-    def test_check_type(self):
-        """
-        Tests the check_type function
-        """
-        string_result = util.check_type("", "string")
-        int_result = util.check_type(0, "int")
-        float_result = util.check_type(0.0, "float")
-        tuple_result = util.check_type((), "tuple")
-        list_result = util.check_type([], "list")
-        dict_result = util.check_type({}, "dict")
-        bool_result = util.check_type(True, "bool")
-        datetime_result = util.check_type(
-            datetime.datetime(2019, 6, 12), "datetime")
-        self.assertEqual(string_result, "<class 'str'>")
-        self.assertEqual(int_result, "<class 'int'>")
-        self.assertEqual(float_result, "<class 'float'>")
-        self.assertEqual(tuple_result, "<class 'tuple'>")
-        self.assertEqual(list_result, "<class 'list'>")
-        self.assertEqual(dict_result, "<class 'dict'>")
-        self.assertEqual(bool_result, "<class 'bool'>")
-        self.assertEqual(datetime_result, "<class 'datetime.datetime'>")
-
-    def test_normal_time_to_datetime(self):
-        """
-        Tests th normal_time_to_ISO function
-        """
-        am_test = util.normal_time_to_datetime("5:23AM", 6, 2, 2019)
-        pm_test = util.normal_time_to_datetime("7:45PM", 4, 9, 2019)
-        self.assertEqual(str(type(am_test)), "<class 'datetime.datetime'>")
-        self.assertEqual(str(type(pm_test)), "<class 'datetime.datetime'>")
-        self.assertEqual(am_test.year, 2019)
-        self.assertEqual(am_test.month, 2)
-        self.assertEqual(am_test.day, 6)
-        self.assertEqual(am_test.hour, 5)
-        self.assertEqual(am_test.minute, 23)
-        self.assertEqual(pm_test.year, 2019)
-        self.assertEqual(pm_test.month, 9)
-        self.assertEqual(pm_test.day, 4)
-        self.assertEqual(pm_test.hour, 19)
-        self.assertEqual(pm_test.minute, 45)
-
-    ###############################################
-    #Testing the functions in calendar_functions.py#
-    ###############################################
 
     def test_get_events_for_day(self):
         """
