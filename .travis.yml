@@ -1,13 +1,16 @@
 dist: xenial
 language: python
 python:
-    - "3.6"
-    - "3.7"
-    - "3.7-dev"
-    - "3.8-dev"
+- '3.6'
+- '3.7'
+- 3.7-dev
+- 3.8-dev
 install:
-    - pip install -r travis_requirements.txt
-script: 
-    - python src/test-calendar_actions.py
-    - python test-utils-generic.py
-    - python test-utils-datetime_utils.py
+- pip install -r travis_requirements.txt
+script:
+- python src/test-calendar_actions.py
+- python test-utils-generic.py
+- python test-utils-datetime_utils.py
+dd:
+- openssl aes-256-cbc -K $encrypted_73ba6e76a49d_key -iv $encrypted_73ba6e76a49d_iv
+  -in firestore_creds.json.enc -out firestore_creds.json -d
