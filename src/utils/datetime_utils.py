@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 def normal_time_to_datetime(normal_time, day, month, year):
     """
     Turns normal time and returns a normal time
