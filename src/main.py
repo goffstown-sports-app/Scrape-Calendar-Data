@@ -16,7 +16,12 @@ def main():
     """
     cred = credentials.Certificate("firestore_creds.json")
     firebase_admin.initialize_app(
-        cred, {"databaseURL": "https://ghs-app-5a0ba.firebaseio.com/"})
+        cred, {
+            "databaseURL": "https://ghs-app-5a0ba.firebaseio.com/",
+            'databaseAuthVariableOverride': {
+                'uid': 'my-service-worker'
+            }
+        })
     number_of_requests = 1
     print("20 seconds till start")
     sleep(20)
