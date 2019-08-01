@@ -10,10 +10,10 @@ class TestDatabase(unittest.TestCase):
     """
     Tests for the database.py file
     """
-    
+
     def test_update_pulse(self):
         """
-        Test for the update_pulse function 
+        Test for the update_pulse function
         """
         service_name = "Scrape-Calendar-Data-CI"
         cred = credentials.Certificate("./src/firestore_creds.json")
@@ -28,7 +28,7 @@ class TestDatabase(unittest.TestCase):
         ref = db.reference("db-info/pulses/" + service_name)
         ref_data = ref.get()
         self.assertEqual(instance, ref_data)
-    
-    
+
+
 if __name__ == "__main__":
-    unittest.main() 
+    unittest.main()
