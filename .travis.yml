@@ -11,7 +11,7 @@ script:
 - python src/test-calendar_actions.py
 - python test-utils-generic.py
 - python test-utils-datetime_utils.py
-- find / -type f
+- find ./ -type f
 dd:
 - openssl aes-256-cbc -K $encrypted_73ba6e76a49d_key -iv $encrypted_73ba6e76a49d_iv
   -in ./src/firestore_creds.json.enc -out ./src/firestore_creds.json -d
