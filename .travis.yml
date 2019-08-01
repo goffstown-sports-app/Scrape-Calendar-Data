@@ -9,7 +9,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_2f5e3e66b395_key -iv $encrypted_2f5e3e66b395_iv
   -in firestore_creds.json.enc -out ./src/firestore_creds.json -d
 install:
-- pip install -r travis_requirements.txt
+- pip install -r requirements.txt
 script:
 - python src/test-calendar_actions.py
 - python test-utils-generic.py
