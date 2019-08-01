@@ -27,7 +27,7 @@ def main():
     sleep(20)
     while True:
         try:
-            database.update_pulse(number_of_requests)
+            database.update_pulse(number_of_requests, "Scrape-Calendar-Data")
             datetime_now = datetime.now()
             day = int(datetime_now.day)
             month = int(datetime_now.month)
