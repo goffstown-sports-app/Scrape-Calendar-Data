@@ -15,4 +15,3 @@ script:
 - python test-utils-generic.py
 - python test-utils-datetime_utils.py
 - python src/test-database.py
-- find ./ -type f
