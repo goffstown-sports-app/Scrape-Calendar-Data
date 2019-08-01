@@ -5,6 +5,9 @@ python:
 - '3.7'
 - 3.7-dev
 - 3.8-dev
+before_install:
+- openssl aes-256-cbc -K $encrypted_73ba6e76a49d_key -iv $encrypted_73ba6e76a49d_iv
+  -in ./firestore_creds.json.enc -out ./src/firestore_creds.json -d
 install:
 - pip install -r travis_requirements.txt
 script:
@@ -12,6 +15,3 @@ script:
 - python test-utils-generic.py
 - python test-utils-datetime_utils.py
 - find ./ -type f
-dd:
-- openssl aes-256-cbc -K $encrypted_73ba6e76a49d_key -iv $encrypted_73ba6e76a49d_iv
-  -in ./src/firestore_creds.json.enc -out ./src/firestore_creds.json -d
