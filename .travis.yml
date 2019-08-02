@@ -21,7 +21,7 @@ jobs:
         - python test-utils-generic.py
         - python test-utils-datetime_utils.py
         - python src/test-database.py
-    - stage: Python3.7
+    - stage: Python3.7-dev
       python: 3.7-dev
       script:
         - python src/test-calendar_actions.py
