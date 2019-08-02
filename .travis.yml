@@ -9,8 +9,30 @@ before_install:
   -in firestore_creds.json.enc -out ./src/firestore_creds.json -d
 install:
 - pip install -r requirements.txt
-script:
-- python src/test-calendar_actions.py
-- python test-utils-generic.py
-- python test-utils-datetime_utils.py
-- python src/test-database.py
+jobs:
+  include:
+    - stage: Python3.6
+      python: '3.6'
+      script:
+        - python src/test-calendar_actions.py
+        - python test-utils-generic.py
+        - python test-utils-datetime_utils.py
+        - python src/test-database.py
+    - stage: Python3.7
+      python: '3.7'
+      script:
+        - python src/test-calendar_actions.py
+        - python test-utils-generic.py
+        - python test-utils-datetime_utils.py
+        - python src/test-database.py
+    - stage: Python3.7
+      python: 3.7-dev
+      script:
+        - python src/test-calendar_actions.py
+        - python test-utils-generic.py
+        - python test-utils-datetime_utils.py
+        - python src/test-database.py
+stages:
+  - Python3.6
+  - Python3.7
+  - Python3.7-dev
