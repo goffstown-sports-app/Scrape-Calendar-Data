@@ -1,6 +1,6 @@
 from firebase_admin import db
 from datetime import datetime
-from platform import uname, platform
+import platform
 
 from utils import generic
 
@@ -205,8 +205,10 @@ def update_pulse(consecutive_number_of_requests, service_name):
     ref_set = {
         "Pulse-Time": current_time,
         "Pulse-Amount (Consecutive)": consecutive_number_of_requests,
-        "Pulse-Node": str(uname().node),
-        "Pulse-OS": str(platform())
+        "Pulse-Node": str(platform.uname().node),
+        "Pulse-OS": str(platform.platform()),
+        "Pulse_PyVersion": str(platform.python_version()),
+        ""
     }
     child_ref.set(ref_set)
     return ref_set
