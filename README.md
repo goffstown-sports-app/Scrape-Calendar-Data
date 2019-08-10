@@ -33,4 +33,4 @@ Once you have installed the requirements, you can now run the program! You run t
 
 ## Contributors
 
-* Matthew Gleich (@Matt-Gleich)
+* [Matthew Gleich](https://github.com/Matt-Gleich) (@Matt-Gleich)
