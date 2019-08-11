@@ -38,7 +38,7 @@ def main():
             cleaned_response = CA.cleaning_response(
                 initial_response, day, month, year)
             if hour == 0 and minute <= 3:
-                database.init_database([
+                database.init_scores_database([
                     "V-M-Soccer",
                     "JV-M-Soccer",
                     "V-F-Soccer",
@@ -74,7 +74,7 @@ def main():
             print("")
             first_time_run = 0
             if cleaned_response != None:
-                database.update_database(cleaned_response, hour)
+                database.update_status_database(cleaned_response, hour)
                 database.update_calendar_section(cleaned_response)
                 print("Updated database\nNext check in 3 min\n")
                 first_time_run += 1
