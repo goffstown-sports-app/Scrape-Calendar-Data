@@ -118,7 +118,6 @@ def init_scores_database(list_of_sports):
     
     Arguments:
         list_of_sports {list} -- list of all the sports and their names
-    
     Raises:
         Exception: That the sport is not in the right format
         Exception: That the sport does not give information on if it is varsity or jv
