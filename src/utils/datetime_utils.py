@@ -2,13 +2,16 @@ from datetime import datetime
 
 
 def normal_time_to_datetime(normal_time, day, month, year):
-    """
-    Turns normal time and returns a normal time
-    :param normal_time: normal time (str, ex: 4:30PM)
-    :param day: the day (int)
-    :param month: the month (int)
-    :param year: the year (int)
-    :return: ISO time (str)
+    """Converts normal time format to a datetime object
+    
+    Arguments:
+        normal_time {string} -- normal time
+        day {int} -- normal time day
+        month {int} -- normal time month
+        year {int} -- normal time year
+    
+    Returns:
+        datetime -- iso datetime version of the normal time
     """
     if "am" in normal_time.lower():
         time_elements_strs = normal_time.strip("AM").split(":")

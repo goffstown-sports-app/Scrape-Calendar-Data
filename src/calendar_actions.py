@@ -6,12 +6,15 @@ from utils import generic
 
 
 def get_events_for_day(day, month, year):
-    """
-    Get event information for the events of the day
-    :param day: day to query (int)
-    :param month: month to query (int)
-    :param year: year to query (int)
-    :return: events (list)
+    """Query's the events from the website
+    
+    Arguments:
+        day {int} -- day to query
+        month {int} -- month to query
+        year {int} -- year to query
+    
+    Returns:
+        dict -- queryied result
     """
     # Type checking:
     generic.check_type(day, "int")
@@ -51,13 +54,16 @@ def get_events_for_day(day, month, year):
 
 
 def cleaning_response(json_data, day, month, year):
-    """
-    Will clean the json response from the website.
-    :param json_data: json response from the calendarAjax file
-    :param day: day that was queried (int)
-    :param month: month that was queried (int)
-    :param year: year that was queried (int)
-    :return: cleaned data (list)
+    """Cleaning the Queried Response
+    
+    Arguments:
+        json_data {dict} -- queried response from the website
+        day {int} -- day that was queried
+        month {int} -- month that was queried
+        year {int} -- year that was queried
+    
+    Returns:
+        dict -- clean version of the queried response
     """
     # Type Checking:
     try:
