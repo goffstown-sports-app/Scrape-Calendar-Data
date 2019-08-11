@@ -204,7 +204,7 @@ def update_pulse(consecutive_number_of_requests, service_name):
     child_ref = ref.child("pulses/" + service_name)
     ref_set = {
         "Pulse-Time": current_time,
-        "Pulse-Amount (Consecutive)": consecutive_number_of_requests,
+        "Pulse-Amount-(Consecutive)": consecutive_number_of_requests,
         "Pulse-Node": str(platform.uname().node),
         "Pulse-OS": str(platform.platform()),
         "Pulse-Python-Version": str(platform.python_version())
