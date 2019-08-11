@@ -211,3 +211,4 @@ def update_pulse(consecutive_number_of_requests, service_name):
     }
     child_ref.set(ref_set)
     return ref_set
+
