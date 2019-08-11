@@ -6,10 +6,10 @@ from utils import generic
 
 
 def init_field_information_section(list_of_field_names):
-    """
-    Initializes the field_information section of the realtime database
-    :param list_of_field_names: list of all the field names
-    :return: none
+    """Inits the field information section of the database
+    
+    Arguments:
+        list_of_field_names {list} -- list of all the field names
     """
     # Type checking:
     generic.check_type(list_of_field_names, "list")
@@ -40,12 +40,12 @@ def init_field_information_section(list_of_field_names):
 # ])
 
 
-def update_database(cleaned_data, current_hour):
-    """
-    Will update the database with information from the calendar.
-    :param cleaned_data: clean data from the website
-    :param current_hour: the
-    :return: none
+def update_status_database(cleaned_data, current_hour):
+    """Updates the field status section of the database
+    
+    Arguments:
+        cleaned_data {dict} -- data after it has been cleaned
+        current_hour {int} -- current hour of the day
     """
     got_data = 0
     for event in cleaned_data:
@@ -74,9 +74,7 @@ def update_database(cleaned_data, current_hour):
 
 
 def init_calendar_section():
-    """
-    Initialize the calendar section of the database
-    :return: none
+    """Initialize the calendar section of the database
     """
     ref = db.reference("calendar")
     child_ref = ref.child("tday-information")
@@ -91,10 +89,10 @@ def init_calendar_section():
 
 
 def update_calendar_section(list_of_events):
-    """
-    Update the database for the calendar section
-    :param list_of_events: list of events for the day.
-    :return: none
+    """Update the database for the calendar section`
+    
+    Arguments:
+        list_of_events {list} -- list of all the events from the website
     """
     ref = db.reference("calendar")
     events = 0
@@ -115,11 +113,16 @@ def update_calendar_section(list_of_events):
     child_ref2.set({"number-of-events": len(list_of_events)})
 
 
-def init_database(list_of_sports):
-    """
-    Initializes the firebase realtime database
-    :param list_of_sports: list of supported sports. Each sport should be marked like "V-M-Sport"
-    :return: none
+def init_scores_database(list_of_sports):
+    """Inits the scores section of the database
+    
+    Arguments:
+        list_of_sports {list} -- list of all the sports and their names
+    
+    Raises:
+        Exception: That the sport is not in the right format
+        Exception: That the sport does not give information on if it is varsity or jv
+        Exception: That the sport does not give information on the gender
     """
     # Check types:
     generic.check_type(list_of_sports, "list")
@@ -127,13 +130,13 @@ def init_database(list_of_sports):
         items = sport.split("-")
         if len(items) != 3:
             raise Exception(
-                "It seems as though the sports came in wrong from the init_database function")
+                "It seems as though the sports came in wrong from the init_scores_database function")
         if items[0].lower() != "v" and items[0].lower() != "jv":
             raise Exception(
-                "It seems as though the varsity sports came in wrong for the init_database function")
+                "It seems as though the varsity sports came in wrong for the init_scores_database function")
         if items[1].lower() != "f" and items[1].lower() != "m":
             raise Exception(
-                "Item seems as though the gender came in wrong for the init_database function")
+                "Item seems as though the gender came in wrong for the init_scores_database function")
 
     # Firestore interactions:
     ref = db.reference("scores")
@@ -192,19 +195,22 @@ def init_database(list_of_sports):
 # ])
 
 
-def update_pulse(consecutive_number_of_requests, service_name):
-    """
-    Update the pulse
-    :param consecutive_number_of_requests: the number of requests
-    :param service_name: name of the service
-    :return: ref_set
+def update_pulse(consecutive_number_of_runs, service_name):
+    """Updates the pulse for this application
+    
+    Arguments:
+        consecutive_number_of_runs {int} -- how many times the application has ran in a row
+        service_name {str} -- name of the service
+    
+    Returns:
+        dict -- what the pulse was set as in the database
     """
     current_time = str(datetime.now())
     ref = db.reference("db-info")
     child_ref = ref.child("pulses/" + service_name)
     ref_set = {
         "Pulse-Time": current_time,
-        "Pulse-Amount-(Consecutive)": consecutive_number_of_requests,
+        "Pulse-Amount-(Consecutive)": consecutive_number_of_runs,
         "Pulse-Node": str(platform.uname().node),
         "Pulse-OS": str(platform.platform()),
         "Pulse-Python-Version": str(platform.python_version())
