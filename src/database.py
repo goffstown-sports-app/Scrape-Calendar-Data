@@ -207,7 +207,7 @@ def update_pulse(consecutive_number_of_requests, service_name):
         "Pulse-Amount (Consecutive)": consecutive_number_of_requests,
         "Pulse-Node": str(platform.uname().node),
         "Pulse-OS": str(platform.platform()),
-        "Pulse_PyVersion": str(platform.python_version())
+        "Pulse-Python-Version": str(platform.python_version())
     }
     child_ref.set(ref_set)
     return ref_set
