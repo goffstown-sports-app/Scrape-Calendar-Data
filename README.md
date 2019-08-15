@@ -27,7 +27,7 @@ Install the requirements by doing the following:
 
 ## Usage
 
-Once you have installed the requirements, you can now run the program! You run the program by inputting the following command once you are in the folder:
+Once you have installed the requirements, you can now run the program! You run the program by inputting the following command once you are in the src folder:
 
 `python main.py`
 
