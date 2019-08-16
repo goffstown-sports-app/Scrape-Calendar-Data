@@ -4,7 +4,6 @@
 
 import datetime
 import unittest
-import warnings
 
 import calendar_actions as CA
 
@@ -51,6 +50,4 @@ class UnitTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    warnings.filterwarnings(action="ignore", message="unclosed",
-                            category=ResourceWarning)
     unittest.main()
