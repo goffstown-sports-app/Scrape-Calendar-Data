@@ -1,6 +1,7 @@
 from firebase_admin import db
 from datetime import datetime
 import platform
+import socket
 
 from utils import generic
 
@@ -212,7 +213,8 @@ def update_pulse(consecutive_number_of_runs, service_name):
         "Pulse-Amount-(Consecutive)": consecutive_number_of_runs,
         "Pulse-Node": str(platform.uname().node),
         "Pulse-OS": str(platform.platform()),
-        "Pulse-Python-Version": str(platform.python_version())
+        "Pulse-Python-Version": str(platform.python_version()),
+        "Pulse-IP": str(socket.gethostname(socket.gethostname()))
     }
     child_ref.set(ref_set)
     return ref_set
