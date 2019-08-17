@@ -1,10 +1,8 @@
-#
-# THIS IS HERE FOR A REASON. DON'T MOVE!!
-#
-
 import datetime
 import unittest
+import sys
 
+sys.path.append("..")
 import calendar_actions as CA
 
 

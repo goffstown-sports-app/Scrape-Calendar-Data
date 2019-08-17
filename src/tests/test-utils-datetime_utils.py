@@ -1,6 +1,8 @@
 import unittest
+import sys
 
-from src.utils import datetime_utils
+sys.path.append("..")
+from utils import datetime_utils
 
 
 class TestDatetimeUtils(unittest.TestCase):
