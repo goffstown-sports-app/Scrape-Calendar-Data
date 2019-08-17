@@ -11,6 +11,7 @@ jobs:
     - stage: Python3.6
       python: '3.6'
       script:
+        - pwd
         - cd src/tests && python src/tests/test-calendar_actions.py
         - cd src/tests && python src/tests/test-database.py
         - cd src/tests && python src/tests/test-utils-datetime_utils.py
