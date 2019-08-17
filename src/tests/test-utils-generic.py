@@ -1,7 +1,9 @@
 import datetime
 import unittest
+import sys
 
-from src.utils import generic
+sys.path.append("..")
+from utils import generic
 
 
 class UnitTest(unittest.TestCase):
