@@ -3,7 +3,7 @@ def check_type(item, expected_type):
 
     Arguments:
         item {object} -- the object to check
-        expected_type {string} -- expected type of object 
+        expected_type {string} -- expected type of object
 
     Raises:
         TypeError: That the type isn't as expected
