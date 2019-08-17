@@ -11,25 +11,27 @@ jobs:
     - stage: Python3.6
       python: '3.6'
       script:
-        - pwd
-        - cd src/tests && python test-calendar_actions.py
-        - cd src/tests && python test-database.py
-        - cd src/tests && python test-utils-datetime_utils.py
-        - cd src/tests && python test-utils-generic.py
+        - cd src/tests
+        - python test-calendar_actions.py
+        - python test-database.py
+        - python test-utils-datetime_utils.py
+        - python test-utils-generic.py
     - stage: Python3.7
       python: '3.7'
       script:
-        - cd src/tests && python test-calendar_actions.py
-        - cd src/tests && python test-database.py
-        - cd src/tests && python test-utils-datetime_utils.py
-        - cd src/tests && python test-utils-generic.py
+        - cd src/tests
+        - python test-calendar_actions.py
+        - python test-database.py
+        - python test-utils-datetime_utils.py
+        - python test-utils-generic.py
     - stage: Python3.7-dev
       python: 3.7-dev
       script:
-        - cd src/tests && python test-calendar_actions.py
-        - cd src/tests && python test-database.py
-        - cd src/tests && python test-utils-datetime_utils.py
-        - cd src/tests && python test-utils-generic.py
+        - cd src/tests
+        - python test-calendar_actions.py
+        - python test-database.py
+        - python test-utils-datetime_utils.py
+        - python test-utils-generic.py
 stages:
   - Python3.6
   - Python3.7
