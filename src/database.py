@@ -208,13 +208,18 @@ def update_pulse(consecutive_number_of_runs, service_name):
     current_time = str(datetime.now())
     ref = db.reference("db-info")
     child_ref = ref.child("pulses/" + service_name)
+    if "linux" in str(platform.platform()).lower():
+        ip_command = str(os.popen("hostname -I").read())
+        ip = ip_command.split(" ")[0]
+    else:
+        ip = ""
     ref_set = {
         "Pulse-Time": current_time,
         "Pulse-Amount-(Consecutive)": consecutive_number_of_runs,
         "Pulse-Node": str(platform.uname().node),
         "Pulse-OS": str(platform.platform()),
         "Pulse-Python-Version": str(platform.python_version()),
-        "Pulse-IP": os.popen('''ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}''').read()
+        "Pulse-IP": ip
     }
     child_ref.set(ref_set)
     return ref_set
