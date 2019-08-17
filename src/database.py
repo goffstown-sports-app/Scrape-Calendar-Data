@@ -214,7 +214,7 @@ def update_pulse(consecutive_number_of_runs, service_name):
         "Pulse-Node": str(platform.uname().node),
         "Pulse-OS": str(platform.platform()),
         "Pulse-Python-Version": str(platform.python_version()),
-        "Pulse-IP": str(socket.gethostname(socket.gethostname()))
+        "Pulse-IP": str(socket.gethostbyname(socket.gethostname()))
     }
     child_ref.set(ref_set)
     return ref_set
