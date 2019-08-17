@@ -7,7 +7,7 @@ from utils import generic
 
 def init_field_information_section(list_of_field_names):
     """Inits the field information section of the database
-    
+
     Arguments:
         list_of_field_names {list} -- list of all the field names
     """
@@ -42,7 +42,7 @@ def init_field_information_section(list_of_field_names):
 
 def update_status_database(cleaned_data, current_hour):
     """Updates the field status section of the database
-    
+
     Arguments:
         cleaned_data {dict} -- data after it has been cleaned
         current_hour {int} -- current hour of the day
@@ -90,7 +90,7 @@ def init_calendar_section():
 
 def update_calendar_section(list_of_events):
     """Update the database for the calendar section`
-    
+
     Arguments:
         list_of_events {list} -- list of all the events from the website
     """
@@ -115,7 +115,7 @@ def update_calendar_section(list_of_events):
 
 def init_scores_database(list_of_sports):
     """Inits the scores section of the database
-    
+
     Arguments:
         list_of_sports {list} -- list of all the sports and their names
     Raises:
@@ -196,11 +196,11 @@ def init_scores_database(list_of_sports):
 
 def update_pulse(consecutive_number_of_runs, service_name):
     """Updates the pulse for this application
-    
+
     Arguments:
         consecutive_number_of_runs {int} -- how many times the application has ran in a row
         service_name {str} -- name of the service
-    
+
     Returns:
         dict -- what the pulse was set as in the database
     """
@@ -216,4 +216,3 @@ def update_pulse(consecutive_number_of_runs, service_name):
     }
     child_ref.set(ref_set)
     return ref_set
-

@@ -3,13 +3,13 @@ from datetime import datetime
 
 def normal_time_to_datetime(normal_time, day, month, year):
     """Converts normal time format to a datetime object
-    
+
     Arguments:
         normal_time {string} -- normal time
         day {int} -- normal time day
         month {int} -- normal time month
         year {int} -- normal time year
-    
+
     Returns:
         datetime -- iso datetime version of the normal time
     """

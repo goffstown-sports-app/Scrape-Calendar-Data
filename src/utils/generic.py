@@ -1,13 +1,13 @@
 def check_type(item, expected_type):
     """Check the datatype of an object
-    
+
     Arguments:
         item {object} -- the object to check
         expected_type {string} -- expected type of object 
-    
+
     Raises:
         TypeError: That the type isn't as expected
-    
+
     Returns:
         string -- datatime of the item gotten with type()
     """

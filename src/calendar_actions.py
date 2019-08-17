@@ -7,12 +7,12 @@ from utils import generic
 
 def get_events_for_day(day, month, year):
     """Query's the events from the website
-    
+
     Arguments:
         day {int} -- day to query
         month {int} -- month to query
         year {int} -- year to query
-    
+
     Returns:
         dict -- queryied result
     """
@@ -55,13 +55,13 @@ def get_events_for_day(day, month, year):
 
 def cleaning_response(json_data, day, month, year):
     """Cleaning the Queried Response
-    
+
     Arguments:
         json_data {dict} -- queried response from the website
         day {int} -- day that was queried
         month {int} -- month that was queried
         year {int} -- year that was queried
-    
+
     Returns:
         dict -- clean version of the queried response
     """

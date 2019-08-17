@@ -11,4 +11,3 @@ COPY /src /src
 
 WORKDIR /src
 CMD ["python3", "main.py"]
- 
