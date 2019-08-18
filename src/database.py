@@ -206,8 +206,7 @@ def update_pulse(consecutive_number_of_runs, service_name):
         dict -- what the pulse was set as in the database
     """
     current_time = str(datetime.now())
-    ref = db.reference("db-info")
-    child_ref = ref.child("pulses/" + service_name)
+    ref = db.reference("db-info/pulses/" + service_name)
     if "linux" in str(platform.platform()).lower():
         ip_command = str(os.popen("hostname -I").read())
         ip = ip_command.split(" ")[0]
