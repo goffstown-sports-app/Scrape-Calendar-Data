@@ -74,20 +74,14 @@ def main():
                 ])
                 system("rm request_data.json")
             print("")
-            first_time_run = 0
             if cleaned_response != None:
                 database.update_status_database(cleaned_response, hour)
                 database.update_calendar_section(cleaned_response)
                 print("Updated database\nNext check in 3 min\n")
-                first_time_run += 1
                 saved_description = "wrote data"
             else:
                 print("Didn't update database\nNext check in 3 min\n")
                 saved_description = "nothing"
-                first_time_run += 1
-            if first_time_run == 0:
-                with open("request_data.json", "w") as request_data:
-                    json.dump([], request_data)
             with open("request_data.json", "a") as request_data:
                 json.dump([str(datetime_now), saved_description], request_data)
             for i in range(time_diff):
