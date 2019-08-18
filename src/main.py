@@ -27,6 +27,8 @@ def main():
     sleep(20)
     while True:
         try:
+            time_diff = 180
+            database.set_monitoring_info(True, time_diff)
             database.update_pulse(number_of_requests, "Scrape-Calendar-Data")
             datetime_now = datetime.now()
             day = int(datetime_now.day)
@@ -88,10 +90,10 @@ def main():
                     json.dump([], request_data)
             with open("request_data.json", "a") as request_data:
                 json.dump([str(datetime_now), saved_description], request_data)
-            for i in range(180):
+            for i in range(time_diff):
                 sleep(1)
                 print("\n--------------------------------")
-                print(180 - i, "seconds till next request")
+                print(time_diff - i, "seconds till next request")
                 print("\nNumber of request:", number_of_requests)
             for i in range(40):
                 print("\n")
