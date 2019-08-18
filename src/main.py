@@ -39,7 +39,7 @@ def main():
             initial_response = CA.get_events_for_day(day, month, year)
             cleaned_response = CA.cleaning_response(
                 initial_response, day, month, year)
-            if hour == 0 and minute <= 3:
+            if hour == 0 and minute <= time_diff / 60:
                 database.init_scores_database([
                     "V-M-Soccer",
                     "JV-M-Soccer",
