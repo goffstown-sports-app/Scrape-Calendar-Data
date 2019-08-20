@@ -234,7 +234,7 @@ def set_monitoring_info(email_notifications, pulse_time_diff_secs):
     ref = db.reference("db-info/monitoring/Scrape-Calendar-Data")
     ref_set = {
         "email-notification": email_notifications,
-        "pulse-time-diffs-(secs)": pulse_time_diff_secs + 120,
+        "pulse-time-diffs-(secs)": pulse_time_diff_secs + 300,
         "pulse-time-diffs-exact-(secs)": pulse_time_diff_secs
     }
     ref.set(ref_set)
