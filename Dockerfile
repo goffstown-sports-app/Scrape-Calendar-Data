@@ -4,7 +4,11 @@ FROM python:3.7.4-stretch
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN python -m venv /app/env
+ENV PATH="/app/env/bin:$PATH"
+
 COPY requirements.txt /requirements.txt
+RUN pip install --upgrade pip
 RUN pip install -r /requirements.txt
 
 COPY /src /src
