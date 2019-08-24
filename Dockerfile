@@ -8,6 +8,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Install Depencies
 COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip
+RUN python -m pip install --upgrade setuptools
 RUN pip install -r /requirements.txt
 
 # Copying over files
