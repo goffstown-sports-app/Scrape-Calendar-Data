@@ -23,8 +23,6 @@ def main():
             }
         })
     number_of_requests = 1
-    print("20 seconds till start")
-    sleep(20)
     while True:
         try:
             time_diff = 180
