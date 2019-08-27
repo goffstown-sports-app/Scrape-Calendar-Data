@@ -1,4 +1,6 @@
 dist: xenial
+services:
+  - docker
 language: python
 before_install:
   - export TZ=america/new-york
@@ -32,7 +34,13 @@ jobs:
         - python test-database.py
         - python test-utils-datetime_utils.py
         - python test-utils-generic.py
+    - stage: Docker-Container
+      script:
+        - cd src
+        - docker build -t mattgleich/scrape-calendar-data:latest .
+        - docker run mattgleich/scrape-calendar-data
 stages:
   - Python3.6
   - Python3.7
   - Python3.7-dev
+  - Docker-Container
