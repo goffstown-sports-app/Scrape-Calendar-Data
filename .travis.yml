@@ -37,7 +37,7 @@ jobs:
       services:
         - docker
       script:
-        - docker build -f Dockerfile.dev -t mattgleich/scrape-calendar-data:latest .
+        - docker build -f Dockerfile.dev -t mattgleich/scrape-calendar-data:$(date +%s) .
         - docker run mattgleich/scrape-calendar-data
 stages:
   - Python3.6
