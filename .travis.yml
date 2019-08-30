@@ -44,7 +44,7 @@ jobs:
         - docker build -f Dockerfile.dev -t mattgleich/scrape-calendar-data:latest .
         - docker run -e CI=true mattgleich/scrape-calendar-data
 stages:
-  - Python3.6
-  - Python3.7
-  - Python3.7-dev
   - Docker-Container
+  - Python3.7
+  - Python3.6
+  - Python3.7-dev
