@@ -117,8 +117,9 @@ def cleaning_response(json_data, day, month, year):
                 hour = datetime_form.hour
                 minute = datetime_form.minute
                 if "vs" in event["thedate"]:
-                    away_team_name = " ".join(event["thedate"][2:])
-                away_team_name = " ".join(event["thedate"][1:])
+                    away_team_name = " ".join(event["thedate"].split(" ")[3:])
+                else:
+                    away_team_name = " ".join(event["thedate"].split(" ")[2:])
                 thetitle_elements = event["theTitle"].split(" ")
                 last_two_items = thetitle_elements[-2:]
                 if "varsity" == last_two_items[0].lower():
