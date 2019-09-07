@@ -52,13 +52,13 @@ def update_status_database(cleaned_data, current_hour):
     for event in cleaned_data:
         event_hour = event["hour"]
         if current_hour == event_hour:
-            if "gym" in event["location"].lower() and "ghs" in event["location"].lower() and event["home"]:
+            if "GHS-GYM-FIELD" == event["location"] and event["home"]:
                 field_name = "gym"
                 got_data += 1
-            elif "grizzles" in event["location"].lower() and "field" in event["location"].lower() and event["home"]:
+            elif "GHS-FOOTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "football-field"
                 got_data += 1
-            elif "ghs" in event["location"].lower() and "softball" in event["location"].lower() and event["home"]:
+            elif "GHS-SOFTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "softball-field"
                 got_data += 1
             try:
