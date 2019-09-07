@@ -38,7 +38,7 @@ class UnitTest(unittest.TestCase):
         zero_content_response = CA.cleaning_response(
             CA.get_events_for_day(8, 6, 2019), 8, 6, 2019)
 
-        self.assertEqual(single_content_response, [{'gender': 'm', 'varsity': True, 'ghs_sport': True, 'home': True, 'location': 'GHS Gymnasium', 'start-time-(normal)': '6:00PM',
+        self.assertEqual(single_content_response, [{'gender': 'm', 'varsity': True, 'ghs_sport': True, 'home': True, 'location': 'GHS-GYM-FIELD', 'start-time-(normal)': '6:00PM',
                                                     'stat-time-(datetime)': datetime.datetime(2019, 6, 4, 18, 0), 'hour': 18, 'minute': 0, 'away_team_name': 'Pinkerton Academy', 'sport': 'Volleyball', 'cancelled': False}])
 
         self.assertEqual(double_content_response, [{'gender': 'm', 'varsity': True, 'ghs_sport': True, 'home': False, 'location': 'Nashua North High School', 'start-time-(normal)': '5:00PM', 'stat-time-(datetime)': datetime.datetime(2019, 6, 6, 17, 0), 'hour': 17, 'minute': 0, 'away_team_name': 'Salem Athletics', 'sport': 'Volleyball', 'cancelled': False}, {
