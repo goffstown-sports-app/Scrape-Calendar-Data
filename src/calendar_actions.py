@@ -107,7 +107,6 @@ def cleaning_response(json_data, day, month, year):
                     home = True
                 elif event["homeOrAway"] == 0:
                     home = False
-                location = event["thePlace"].strip("@").strip()
                 thedate_elements = event["thedate"].strip(
                     "(H)").strip("(A)").strip().split(" ")
                 normal_time = thedate_elements[0]
@@ -140,6 +139,8 @@ def cleaning_response(json_data, day, month, year):
                         location = "GHS-GYM-FIELD"
                     elif "field" in sport_name.lower() and "hockey" in sport_name.lower():
                         location = "GHS-FOOTBALL-FIELD"
+                else:
+                    location = event["thePlace"].strip("@").strip()
                 event_dict = {
                     "gender": gender,
                     "varsity": varsity,
