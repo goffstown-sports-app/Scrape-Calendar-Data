@@ -108,7 +108,6 @@ def cleaning_response(json_data, day, month, year):
                 elif event["homeOrAway"] == 0:
                     home = False
                 location = event["thePlace"].strip("@").strip()
-                print("Example date:", event["thedate"])
                 thedate_elements = event["thedate"].strip(
                     "(H)").strip("(A)").strip().split(" ")
                 normal_time = thedate_elements[0]
