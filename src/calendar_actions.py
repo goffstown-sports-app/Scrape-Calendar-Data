@@ -95,7 +95,7 @@ def cleaning_response(json_data, day, month, year):
                     gender = "m"
                 elif "girls" in event["theTitle"].lower():
                     gender = "g"
-                if "junior" in event["theTitle"].lower() and "varsity" in event["theTitle"]:
+                if "junior" in event["theTitle"].lower() and "varsity" in event["theTitle"].lower(``):
                     varsity = False
                 elif "varsity" in event["theTitle"].lower():
                     varsity = True
