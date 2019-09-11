@@ -99,6 +99,8 @@ def cleaning_response(json_data, day, month, year):
                     varsity = False
                 elif "varsity" in event["theTitle"].lower():
                     varsity = True
+                else:
+                    varsity = False
                 if "middle" in event["theTitle"].lower():
                     ghs_sport = False
                 elif "middle" not in event["theTitle"].lower():
