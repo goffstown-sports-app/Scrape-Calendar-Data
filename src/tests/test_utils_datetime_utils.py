@@ -4,7 +4,7 @@ sys.path.append("..")
 from utils import datetime_utils
 
 
-def test_normal_time_to_datetime(self):
+def test_normal_time_to_datetime():
     """
     Tests the normal_time_to_ISO function
     """
