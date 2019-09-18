@@ -12,30 +12,21 @@ jobs:
       install: pip install -r requirements.txt
       script:
         - cd src/tests
-        - python test-calendar_actions.py
-        - python test-database.py
-        - python test-utils-datetime_utils.py
-        - python test-utils-generic.py
+        - pytest --emoji
     - stage: Python3.7
       language: python
       python: 3.7
       install: pip install -r requirements.txt
       script:
         - cd src/tests
-        - python test-calendar_actions.py
-        - python test-database.py
-        - python test-utils-datetime_utils.py
-        - python test-utils-generic.py
+        - pytest --emoji
     - stage: Python3.7-dev
       language: python
       python: 3.7-dev
       install: pip install -r requirements.txt
       script:
         - cd src/tests
-        - python test-calendar_actions.py
-        - python test-database.py
-        - python test-utils-datetime_utils.py
-        - python test-utils-generic.py
+        - pytest --emoji
     - stage: Docker-Container
       language: generic
       services:
