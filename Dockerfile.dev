@@ -12,4 +12,4 @@ RUN pip install -r /requirements.txt
 COPY /src /src
 
 WORKDIR /src/tests
-CMD ["python3", "__main__.py"]
+CMD ["pytest", "--emoji"]
