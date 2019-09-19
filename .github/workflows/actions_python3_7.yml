@@ -12,7 +12,7 @@ jobs:
     - name: Piping Secrets
       run: |
         touch src/fistore_creds.json
-        echo ${{ firebase_creds }} >> src/firestore_creds.json
+        echo ${{ secrets.firebase_creds }} >> src/firestore_creds.json
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
