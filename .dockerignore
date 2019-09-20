@@ -9,6 +9,7 @@ docker-compose*
 */bin
 */obj
 README.md
-LICENSE
+LICENSE.md
 .vscode
 .firestore.creds.enc
+.yml
