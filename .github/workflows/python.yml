@@ -1,3 +1,5 @@
+on: [push, pull_request]
+
 jobs:
   test:
     name: Python ${{ matrix.python }} on ${{ matrix.os }}
