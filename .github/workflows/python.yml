@@ -1,4 +1,10 @@
-on: [push, pull_request, release]
+[push, pull_request, release]
+on: |
+  push
+  pull_request
+  release
+  schedule:
+    - cron: 1 1 * * 1-7
 
 jobs:
   test:
