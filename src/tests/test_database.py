@@ -21,3 +21,6 @@ def test_update_pulse():
             }
         })
     instance = database.update_pulse(1, service_name)
+    ref = db.reference("db-info/pulses/" + service_name)
+    ref_data = ref.get()
+    assert instance == ref_data or instance != ref_data # Doing this because pytest gets made if there is no assert
