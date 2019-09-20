@@ -1,4 +1,4 @@
-name: Python ${{ matrix.python}} on ${{ matrix.os}}
+name: Python ${{ matrix.python }} on ${{ matrix.os }}
 
 on: [push, pull_request]
 
