@@ -2,6 +2,8 @@
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/goffstown-sports-app/Scrape-Calendar-Data) ![GitHub repo size](https://img.shields.io/github/repo-size/goffstown-sports-app/Scrape-Calendar-Data)
 
+[![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Python-Versions/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)
+
 ## Services
 
 | Service Name | Badge                                                                                                                                                                                                                                                                                           | Description                   |
