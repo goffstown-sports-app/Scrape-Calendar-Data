@@ -1,25 +1,40 @@
+sudo: required
 dist: xenial
 before_install:
   - export TZ=america/new-york
   - echo $firebase_creds >> src/tests/firestore_creds.json
 jobs:
   include:
-    - stage: Python
+    - stage: Python3.6
       language: python
-      python:
-        - 3.6
-        - 3.7
-        - 3.7-dev
+      python: 3.6
       install: pip install -r requirements.txt
       script:
         - cd src/tests
         - pytest --emoji
-    - stage: Docker
-      language: generic
-      services: docker
+    - stage: Python3.7
+      language: python
+      python: 3.7
+      install: pip install -r requirements.txt
       script:
-        - docker build -f Dockerfile.dev -t mattgleich/server-monitor:latest .
-        - docker run -e CI=true mattgleich/server-monitor
+        - cd src/tests
+        - pytest --emoji
+    - stage: Python3.7-dev
+      language: python
+      python: 3.7-dev
+      install: pip install -r requirements.txt
+      script:
+        - cd src/tests
+        - pytest --emoji
+    - stage: Docker-Container
+      language: generic
+      services:
+        - docker
+      script:
+        - docker build -f Dockerfile.dev -t mattgleich/scrape-calendar-data:latest .
+        - docker run -e CI=true mattgleich/scrape-calendar-data
 stages:
-  - Python
-  - Docker
+  - Docker-Container
+  - Python3.7
+  - Python3.6
+  - Python3.7-dev
