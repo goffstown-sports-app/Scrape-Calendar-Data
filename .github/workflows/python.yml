@@ -3,11 +3,10 @@ on: [push, pull_request, release]
 
 jobs:
   test:
-    name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    name: Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest]
         python: ["3.6", "3.7", "3.7-dev"]
 
     steps:
