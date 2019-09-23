@@ -28,18 +28,13 @@ def main():
         database.set_monitoring_info(True, time_diff)
         database.update_pulse(number_of_requests, "Scrape-Calendar-Data")
         datetime_now = datetime.now()
-        day = int(datetime_now.day)
-        month = int(datetime_now.month)
-        year = int(datetime_now.year)
-        hour = int(datetime_now.hour)
-        minute = int(datetime_now.minute)
         initial_response = CA.get_events_for_day(
-            day, month, year)
+            datetime_now.day, datetime_now.month, datetime_now.year)
         print(initial_response + "\n")
         cleaned_response = CA.cleaning_response(
-            initial_response, day, month, year)
+            initial_response, datetime_now.day, datetime_now.month, datetime_now.year)
         print(cleaned_response + "\n")
-        if hour == 0 and minute <= time_diff / 60:
+        if datetime_now.hour == 0 and datetime_now.minute <= time_diff / 60:
             database.init_scores_database([
                 "V-M-Soccer",
                 "JV-M-Soccer",
@@ -75,7 +70,7 @@ def main():
             system("rm request_data.json")
         # print("")
         if cleaned_response != None:
-            database.update_status_database(cleaned_response, hour)
+            database.update_status_database(cleaned_response, datetime_now.hour)
             database.update_calendar_section(cleaned_response)
             # print("Updated database\nNext check in 3 min\n")
             saved_description = "wrote data"
