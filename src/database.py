@@ -12,9 +12,6 @@ def init_field_information_section(list_of_field_names):
     Arguments:
         list_of_field_names {list} -- list of all the field names
     """
-    # Type checking:
-    generic.check_type(list_of_field_names, "list")
-
     # Firebase interactions:
     ref = db.reference("field-information")
     child_ref = ref.child("general-information")

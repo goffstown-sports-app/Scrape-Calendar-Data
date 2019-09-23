@@ -16,11 +16,6 @@ def get_events_for_day(day, month, year):
     Returns:
         dict -- queryied result
     """
-    # Type checking:
-    generic.check_type(day, "int")
-    generic.check_type(month, "int")
-    generic.check_type(year, "int")
-
     # Querying information:
     data = 'CalMonth={m}&CalYear={y}&CalDay={d}'.format(m=month, d=day, y=year)
     url = 'https://goffstownathletics.com/main/calendarDayAjax'
@@ -65,15 +60,6 @@ def cleaning_response(json_data, day, month, year):
     Returns:
         dict -- clean version of the queried response
     """
-    # Type Checking:
-    try:
-        generic.check_type(json_data, "list")
-    except Exception:
-        generic.check_type(json_data, "none")
-    generic.check_type(day, "int")
-    generic.check_type(month, "int")
-    generic.check_type(year, "int")
-
     #  Cleaning Data:
     if json_data is None:
         return None
