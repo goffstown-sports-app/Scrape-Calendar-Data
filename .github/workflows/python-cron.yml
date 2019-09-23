@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     name: Python ${{ matrix.python }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python: ["3.6", "3.7", "3.7-dev"]
