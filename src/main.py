@@ -28,6 +28,7 @@ def main():
         database.set_monitoring_info(True, time_diff)
         database.update_pulse(number_of_requests, "Scrape-Calendar-Data")
         datetime_now = datetime.now()
+        print("Making request")
         initial_response = CA.get_events_for_day(
             datetime_now.day, datetime_now.month, datetime_now.year)
         print(initial_response + "\n")
@@ -86,7 +87,6 @@ def main():
             # print("\nNumber of request:", number_of_requests)
         for i in range(40):
             print("\n")
-        print("Making request")
         number_of_requests += 1
 
 
