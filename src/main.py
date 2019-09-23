@@ -31,10 +31,10 @@ def main():
         print("Making request")
         initial_response = CA.get_events_for_day(
             datetime_now.day, datetime_now.month, datetime_now.year)
-        print(initial_response + "\n")
+        print(initial_response,"\n")
         cleaned_response = CA.cleaning_response(
             initial_response, datetime_now.day, datetime_now.month, datetime_now.year)
-        print(cleaned_response + "\n")
+        print(cleaned_response, "\n")
         if datetime_now.hour == 0 and datetime_now.minute <= time_diff / 60:
             database.init_scores_database([
                 "V-M-Soccer",
