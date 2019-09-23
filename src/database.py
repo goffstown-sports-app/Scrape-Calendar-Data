@@ -3,8 +3,6 @@ from datetime import datetime
 import platform
 import os
 
-from utils import generic
-
 
 def init_field_information_section(list_of_field_names):
     """Inits the field information section of the database

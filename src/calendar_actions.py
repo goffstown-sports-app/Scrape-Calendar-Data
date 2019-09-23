@@ -2,7 +2,6 @@ import requests
 import json
 
 from utils import datetime_utils
-from utils import generic
 
 
 def get_events_for_day(day, month, year):
