@@ -69,24 +69,12 @@ def main():
                 "football-field"
             ])
             system("rm request_data.json")
-        # print("")
         if cleaned_response != None:
             database.update_status_database(cleaned_response, datetime_now.hour)
             database.update_calendar_section(cleaned_response)
-            # print("Updated database\nNext check in 3 min\n")
             saved_description = "wrote data"
         else:
-            # print("Didn't update database\nNext check in 3 min\n")
             saved_description = "nothing"
-        with open("request_data.json", "a") as request_data:
-            json.dump([str(datetime_now), saved_description], request_data)
-        # for i in range(time_diff):
-            # sleep(1)
-            # print("\n--------------------------------")
-            # print(time_diff - i, "seconds till next request")
-            # print("\nNumber of request:", number_of_requests)
-        for i in range(40):
-            print("\n")
         number_of_requests += 1
 
 
