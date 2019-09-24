@@ -119,22 +119,6 @@ def init_scores_database(list_of_sports):
         Exception: That the sport does not give information on if it is varsity or jv
         Exception: That the sport does not give information on the gender
     """
-    # Check types:
-    generic.check_type(list_of_sports, "list")
-    for sport in list_of_sports:
-        items = sport.split("-")
-        if len(items) != 3:
-            raise Exception(
-                "It seems as though the sports came in wrong from the init_scores_database function")
-        if items[0].lower() != "v" and items[0].lower() != "jv":
-            raise Exception(
-                "It seems as though the varsity sports came in wrong for the init_scores_database function")
-        if items[1].lower() != "f" and items[1].lower() != "m":
-            raise Exception(
-                "Item seems as though the gender came in wrong for the init_scores_database function")
-
-    # Firestore interactions:
-    ref = db.reference("scores")
     for sport in list_of_sports:
         items = sport.split("-")
         if items[0].lower() == "v":
