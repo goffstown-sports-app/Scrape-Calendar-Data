@@ -119,6 +119,7 @@ def init_scores_database(list_of_sports):
         Exception: That the sport does not give information on if it is varsity or jv
         Exception: That the sport does not give information on the gender
     """
+    ref = db.reference("scores")
     for sport in list_of_sports:
         items = sport.split("-")
         if items[0].lower() == "v":
