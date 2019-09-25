@@ -1,5 +1,4 @@
 import requests
-import json
 
 from utils import datetime_utils
 
@@ -36,12 +35,11 @@ def get_events_for_day(day, month, year):
     session = requests.Session()
     req = requests.Request('POST', url, data=data, headers=headers)
     prepped = session.prepare_request(req)
-    resp = session.send(prepped)
-    resp_json = json.loads(resp.content.decode("utf-8"))
+    resp = session.send(prepped).json()
     session.close()
-    if len(resp_json) == 0:
+    if len(resp) == 0:
         return None
-    return resp_json
+    return resp
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))

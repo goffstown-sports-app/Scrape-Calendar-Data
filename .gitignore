@@ -1,3 +1,6 @@
+# Pytest Crap
+.pytest_cache
+
 # Firebase Auth:
 firestore_creds.json
 
