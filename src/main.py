@@ -69,7 +69,11 @@ def main():
                 "football-field"
             ])
         if cleaned_response != None:
-            database.init_field_information_section() # Keep an eye on during testing with vision
+            database.init_field_information_section([  # Keep an eye on during testing with vision
+                "softball-field",
+                "gym",
+                "football-field"
+            ])
             database.update_status_database(cleaned_response, datetime_now.hour)
             database.init_calendar_section()
             database.update_calendar_section(cleaned_response)
