@@ -68,7 +68,6 @@ def main():
                 "gym",
                 "football-field"
             ])
-            system("rm request_data.json")
         if cleaned_response != None:
             database.update_status_database(cleaned_response, datetime_now.hour)
             database.update_calendar_section(cleaned_response)
