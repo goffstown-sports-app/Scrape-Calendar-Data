@@ -75,6 +75,7 @@ def main():
         else:
             saved_description = "nothing"
         number_of_requests += 1
+        sleep(time_diff)
 
 
 if __name__ == "__main__":
