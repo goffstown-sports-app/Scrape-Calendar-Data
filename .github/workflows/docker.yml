@@ -12,7 +12,7 @@ jobs:
           echo ${{ secrets.firebase_creds }} >> src/tests/firestore_creds.json
       - name: Building Image
         run: |
-          docker build -f Dockerfile.dev -t mattgleich/scrape-calendar-data:latest .
+          docker build -f dev.Dockerfile -t mattgleich/scrape-calendar-data:latest .
       - name: Testing Image
         run: |
           docker run -e CI=true mattgleich/scrape-calendar-data
