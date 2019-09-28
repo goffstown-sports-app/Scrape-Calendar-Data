@@ -71,9 +71,6 @@ def main():
         if cleaned_response != None:
             database.update_status_database(cleaned_response, datetime_now.hour)
             database.update_calendar_section(cleaned_response)
-            saved_description = "wrote data"
-        else:
-            saved_description = "nothing"
         number_of_requests += 1
         sleep(time_diff)
 
