@@ -1,0 +1,32 @@
+name: Docker-Hub 
+on:
+  push:
+    branches:
+    - master
+    
+   
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Piping Secrets
+        run: |
+          echo ${{ secrets.firebase_creds }} >> src/tests/firestore_creds.json
+      - name: Building Test Image
+        run: |
+          docker build -f dev.Dockerfile -t ghsapp/scrape-calendar-data-test:latest .
+      - name: Testing Test Image
+        run: |
+          docker run -e CI=true ghsapp/scrape-calendar-data-test
+      - name: Login to Docker Hub
+        run: |
+          echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_id }} --password-stdin
+      - name: Building Production Image
+        run: |
+          rm -f src/tests/firestore_creds.json
+          docker build -t ghsapp/scrape-calendar-data
+      - name: Pushing to Docker Hub
+        run: |
+          docker push ghsapp/scrape-calendar-data
