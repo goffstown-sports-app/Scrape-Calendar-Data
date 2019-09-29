@@ -26,4 +26,3 @@ jobs:
       run: |
         cd src/tests
         pytest --emoji
-        pytest --emoji database_tests/
