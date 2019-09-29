@@ -8,8 +8,9 @@
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
 | [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Python-Versions/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions) | Testing for Python 3.6, 3.7, and 3.7-dev |
 | [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Docker/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)          | Testing Docker container                 |
-| [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Python-Cron/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)     | Cron job for the Python-Versions action           |
-| [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Docker-Cron/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)     | Cron job for the Docker action  |
+| [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Python-Cron/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)     | Cron job for the Python-Versions action  |
+| [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Docker-Cron/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)     | Cron job for the Docker action           |
+| [![Actions Status](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/workflows/Docker-Hub/badge.svg)](https://github.com/goffstown-sports-app/Scrape-Calendar-Data/actions)      | Pushing Image to Docker Hub              |
 
 ## Services
 
