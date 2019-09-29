@@ -25,4 +25,5 @@ jobs:
     - name: Test with pytest
       run: |
         cd src/tests
-        pytest --emoji
+        pytest --emoji main/
+        pytest --emoji database_tests/
