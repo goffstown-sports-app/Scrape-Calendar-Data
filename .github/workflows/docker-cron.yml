@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Piping Secrets
         run: |
-          echo "${{ secrets.firebase_creds }}" >> src/tests/firestore_creds.json
+          echo ${{ secrets.firebase_creds }} >> src/tests/firestore_creds.json
       - name: Building Image
         run: |
           docker build -f dev.Dockerfile -t mattgleich/scrape-calendar-data:latest .
