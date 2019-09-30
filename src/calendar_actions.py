@@ -39,6 +39,8 @@ def get_events_for_day(day, month, year):
     session.close()
     if len(resp) == 0:
         return None
+    if resp == {'message': 'Flag On the Play!', 'detail': 'Do not worry, we are now checking this.'}:
+        return None
     return resp
 
 # Testing:
