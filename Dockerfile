@@ -11,6 +11,7 @@ RUN pip3 install -r requirements.txt
 
 # Copying over files
 COPY /src /src
+RUN rm -f /src/firestore_creds.json
 WORKDIR /src
 
 # Running program
