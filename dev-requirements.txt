@@ -1,0 +1,2 @@
+firebase_admin==3.0.0
+pytest-emoji==0.2.0
