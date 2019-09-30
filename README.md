@@ -21,7 +21,7 @@
 
 ## Description
 
-The scrape calendar data application it made to upload event information to the database. It need to upload this data so the Raspberry Pi connected to the scoreboard knows if there is an event going on at the field. The program will run in either the Google cloud using cloud computing or on a local server.
+The scrape calendar data application it made to upload event information to the database. It needs to upload this data so the Raspberry Pi getting information from the scoreboard knows if there is an event going on at the field. The program is running in a docker container on a Raspberry Pi.
 
 ## Features
 
