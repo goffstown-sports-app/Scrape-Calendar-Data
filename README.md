@@ -44,6 +44,12 @@ Once you have installed the requirements, you can now run the program! You run t
 
 `python main.py`
 
+## Docker Images
+
+| Image Tag                                                                                         | Image Description                                  |
+|---------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| [latest](https://cloud.docker.com/u/ghsapp/repository/docker/ghsapp/scrape-calendar-data/general) | Newest Docker Image created. Build on Intel chips. |
+
 ## Contributors
 
 * [Matthew Gleich](https://github.com/Matt-Gleich) (@Matt-Gleich)
