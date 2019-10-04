@@ -13,3 +13,4 @@ LICENSE.md
 .vscode
 .firestore.creds.enc
 .yml
+.json
