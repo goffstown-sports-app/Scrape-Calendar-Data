@@ -15,6 +15,7 @@ jobs:
           echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_id }} --password-stdin
       - name: Building Production Image
         run: |
+          cd docker
           docker build -t ghsapp/scrape-calendar-data .
       - name: Pushing to Docker Hub
         run: |
