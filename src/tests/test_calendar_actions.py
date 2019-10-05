@@ -1,7 +1,5 @@
 import datetime
-import sys
 
-sys.path.append("..")
 import calendar_actions as CA
 
 def test_get_events_for_day():
