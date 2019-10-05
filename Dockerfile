@@ -2,8 +2,7 @@
 FROM python:3.6-stretch
 
 # Meta for Docker Hub
-LABEL description="📂 Manage what is currently being played on each field using the sports calendar"
-LABEL maintainer="matthewgleich@gmail.com"
+MAINTAINER matthewgleich@gmail.com
 
 # Fixing timezone:
 ENV TZ=America/New_York
