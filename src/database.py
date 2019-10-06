@@ -61,8 +61,11 @@ def update_status_database(cleaned_data, current_hour):
             try:
                 ref = db.reference("field-information")
                 child_ref = ref.child("field-status/" + field_name)
+                current_ref = child_ref.get()
                 child_ref.set({
                     "sport": event["sport"],
+                    "home-score": current_ref["home-score"],
+                    "away-score": current_ref["away-score"],
                     "start-time": event["start-time-(normal)"],
                     "away-team-name": event["away_team_name"],
                     "varsity-sport": event["varsity"]
