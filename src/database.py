@@ -22,6 +22,8 @@ def init_field_information_section(list_of_field_names):
         field_ref = ref.child("field-status/" + field)
         field_ref.set({
             "sport": "",
+            "home-score": 0,
+            "away-score": 0,
             "start-time": "00:00:00",
             "away-team-name": "",
             "varsity-sport": False
