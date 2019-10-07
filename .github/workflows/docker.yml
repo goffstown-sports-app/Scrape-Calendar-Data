@@ -12,7 +12,12 @@ jobs:
           echo ${{ secrets.firebase_creds }} >> src/tests/firestore_creds.json
       - name: Building Image
         run: |
-          docker build -f dev.Dockerfile -t ghsapp/scrape-calendar-data:latest .
+          docker build -f dev.Dockerfile -t ghsapp/scrape-calendar-data:dev .
       - name: Testing Image
         run: |
-          docker run -e CI=true ghsapp/scrape-calendar-data
+          docker run -e CI=true ghsapp/scrape-calendar-data:dev
+      - name: Build and Test Production Image
+        run: |
+          docker-compose up -d
+          sleep 15
+          docker-compose down
