@@ -16,7 +16,7 @@ jobs:
       - name: Testing Production Image
         run: |
           echo ${{ secrets.firebase_creds }} >> src/secrets/firestore_creds.json
-          docker run -v $(pwd)/src/secrets:/src/secrets ghsapp/scrape-calendar-data
+          docker run -v $(pwd)/src/secrets:/src/secrets -d ghsapp/scrape-calendar-data
           sleep 15
           docker kill ghsapp/scrape-calendar-data
       - name: Pushing to Docker Hub
