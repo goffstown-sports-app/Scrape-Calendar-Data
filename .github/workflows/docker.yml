@@ -16,7 +16,7 @@ jobs:
       - name: Testing Image
         run: |
           docker run -e CI=true ghsapp/scrape-calendar-data:dev
-      - name: Build and Test Production Image
+      - name: Building and Testing Production Image
         run: |
           docker-compose up -d
           sleep 15
