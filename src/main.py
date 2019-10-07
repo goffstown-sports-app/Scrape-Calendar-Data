@@ -36,32 +36,6 @@ def main():
             initial_response, datetime_now.day, datetime_now.month, datetime_now.year)
         print(cleaned_response, "\n")
         if datetime_now.hour == 0 and datetime_now.minute <= time_diff / 60:
-            database.init_scores_database([
-                "V-M-Soccer",
-                "JV-M-Soccer",
-                "V-F-Soccer",
-                "JV-F-Soccer",
-                "V-M-Football",
-                "JV-M-Football",
-                "V-M-Baseball",
-                "JV-M-Baseball",
-                "V-F-Softball",
-                "JV-F-Softball",
-                "V-F-Field_Hockey",
-                "JV-F-Field_Hockey",
-                "V-M-Volleyball",
-                "JV-M-Volleyball",
-                "V-F-Volleyball",
-                "JV-F-Volleyball",
-                "V-M-Basketball",
-                "JV-M-Basketball",
-                "V-F-Basketball",
-                "JV-F-Basketball",
-                "V-M-Lacrosse",
-                "JV-M-Lacrosse",
-                "V-F-Lacrosse",
-                "JV-F-Lacrosse"
-            ])
             database.init_calendar_section()
             database.init_field_information_section([
                 "softball-field",

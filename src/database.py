@@ -22,11 +22,12 @@ def init_field_information_section(list_of_field_names):
         field_ref = ref.child("field-status/" + field)
         field_ref.set({
             "sport": "",
+            "home-score": 0,
+            "away-score": 0,
             "start-time": "00:00:00",
             "away-team-name": "",
             "varsity-sport": False
         })
-
 
 # Testing:
 # init_field_information_section([
@@ -59,8 +60,11 @@ def update_status_database(cleaned_data, current_hour):
             try:
                 ref = db.reference("field-information")
                 child_ref = ref.child("field-status/" + field_name)
+                current_ref = child_ref.get()
                 child_ref.set({
                     "sport": event["sport"],
+                    "home-score": current_ref["home-score"],
+                    "away-score": current_ref["away-score"],
                     "start-time": event["start-time-(normal)"],
                     "away-team-name": event["away_team_name"],
                     "varsity-sport": event["varsity"]
@@ -107,72 +111,6 @@ def update_calendar_section(list_of_events):
         })
     child_ref2 = ref.child("tday-information")
     child_ref2.set({"number-of-events": len(list_of_events)})
-
-
-def init_scores_database(list_of_sports):
-    """Inits the scores section of the database
-
-    Arguments:
-        list_of_sports {list} -- list of all the sports and their names
-    Raises:
-        Exception: That the sport is not in the right format
-        Exception: That the sport does not give information on if it is varsity or jv
-        Exception: That the sport does not give information on the gender
-    """
-    ref = db.reference("scores")
-    for sport in list_of_sports:
-        items = sport.split("-")
-        if items[0].lower() == "v":
-            child_name = "varsity-scores/" + \
-                items[1].upper() + "-" + items[2].lower()
-        else:
-            child_name = "jv-scores/" + \
-                items[1].upper() + "-" + items[2].lower()
-        child_ref = ref.child(child_name)
-        child_ref.set({
-            "home-score": 0,
-            "away-score": 0,
-            "game-time": "00:00:00",
-            "period": 0,
-            "away-team-name": "",
-            "event-start": "",
-            "event-end": ""
-        })
-    ref2 = db.reference("db-info")
-    child_ref2 = ref2.child("pulses")
-    current_time = datetime.now()
-    child_ref2.set({
-        "Scrape-Calendar-Pulse": str(current_time)
-    })
-
-
-# Testing:
-# init_database([
-#     "V-M-Soccer",
-#     "JV-M-Soccer",
-#     "V-F-Soccer",
-#     "JV-F-Soccer",
-#     "V-M-Football",
-#     "JV-M-Football",
-#     "V-M-Baseball",
-#     "JV-M-Baseball",
-#     "V-F-Softball",
-#     "JV-F-Softball",
-#     "V-F-Field_Hockey",
-#     "JV-F-Field_Hockey",
-#     "V-M-Volleyball",
-#     "JV-M-Volleyball",
-#     "V-F-Volleyball",
-#     "JV-F-Volleyball",
-#     "V-M-Basketball",
-#     "JV-M-Basketball",
-#     "V-F-Basketball",
-#     "JV-F-Basketball",
-#     "V-M-Lacrosse",
-#     "JV-M-Lacrosse",
-#     "V-F-Lacrosse",
-#     "JV-F-Lacrosse"
-# ])
 
 
 def update_pulse(consecutive_number_of_runs, service_name):
