@@ -29,7 +29,6 @@ def init_field_information_section(list_of_field_names):
             "varsity-sport": False
         })
 
-
 # Testing:
 # init_field_information_section([
 #     "softball-field",
