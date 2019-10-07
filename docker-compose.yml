@@ -1,0 +1,8 @@
+version: "3"
+
+services: 
+  scrape-calendar-data:
+    container_name: scrape-calendar-data
+    build: .
+    volumes:
+      - /src/secrets:/src/secrets
