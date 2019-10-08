@@ -57,10 +57,10 @@ def update_status_database(cleaned_data, current_hour):
             elif "GHS-SOFTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "softball-field"
                 got_data += 1
-            try:
-                ref = db.reference("field-information")
-                child_ref = ref.child("field-status/" + field_name)
-                current_ref = child_ref.get()
+            ref = db.reference("field-information")
+            child_ref = ref.child("field-status/" + field_name)
+            current_ref = child_ref.get()
+            try: 
                 child_ref.set({
                     "sport": event["sport"],
                     "home-score": current_ref["home-score"],
@@ -69,8 +69,15 @@ def update_status_database(cleaned_data, current_hour):
                     "away-team-name": event["away_team_name"],
                     "varsity-sport": event["varsity"]
                 })
-            except NameError:
-                pass
+            except KeyError:
+                child_ref.set({
+                    "sport": event["sport"],
+                    "home-score": 0,
+                    "away-score": 0,
+                    "start-time": event["start-time-(normal)"],
+                    "away-team-name": event["away_team_name"],
+                    "varsity-sport": event["varsity"]
+                })
 
 
 def init_calendar_section():
