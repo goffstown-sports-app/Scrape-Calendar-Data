@@ -44,19 +44,15 @@ def update_status_database(cleaned_data, current_hour):
         cleaned_data {dict} -- data after it has been cleaned
         current_hour {int} -- current hour of the day
     """
-    got_data = 0
     for event in cleaned_data:
         event_hour = event["hour"]
         if current_hour == event_hour:
             if "GHS-GYM-FIELD" == event["location"] and event["home"]:
                 field_name = "gym"
-                got_data += 1
             elif "GHS-FOOTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "football-field"
-                got_data += 1
             elif "GHS-SOFTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "softball-field"
-                got_data += 1
             ref = db.reference("field-information")
             child_ref = ref.child("field-status/" + field_name)
             current_ref = child_ref.get()
