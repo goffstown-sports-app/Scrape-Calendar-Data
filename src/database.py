@@ -46,36 +46,41 @@ def update_status_database(cleaned_data, current_hour):
     """
     for event in cleaned_data:
         event_hour = event["hour"]
+        got_data = 0
         if current_hour == event_hour:
             if "GHS-GYM-FIELD" == event["location"] and event["home"]:
                 field_name = "gym"
+                got_data += 1
             elif "GHS-FOOTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "football-field"
+                got_data += 1
             elif "GHS-SOFTBALL-FIELD" == event["location"] and event["home"]:
                 field_name = "softball-field"
+                got_data += 1
             ref = db.reference("field-information")
             child_ref = ref.child("field-status/" + field_name)
             current_ref = child_ref.get()
-            try: 
-                if current_ref["home-score"] != type(0) or current_ref["away-score"] != type(0):
-                    raise KeyError("Isn't Int")
-                child_ref.set({
-                    "sport": event["sport"],
-                    "home-score": current_ref["home-score"],
-                    "away-score": current_ref["away-score"],
-                    "start-time": event["start-time-(normal)"],
-                    "away-team-name": event["away_team_name"],
-                    "varsity-sport": event["varsity"]
-                })
-            except KeyError:
-                child_ref.set({
-                    "sport": event["sport"],
-                    "home-score": 0,
-                    "away-score": 0,
-                    "start-time": event["start-time-(normal)"],
-                    "away-team-name": event["away_team_name"],
-                    "varsity-sport": event["varsity"]
-                })
+            if got_data != 0:
+                try: 
+                    if current_ref["home-score"] != type(0) or current_ref["away-score"] != type(0):
+                        raise KeyError("Isn't Int")
+                    child_ref.set({
+                        "sport": event["sport"],
+                        "home-score": current_ref["home-score"],
+                        "away-score": current_ref["away-score"],
+                        "start-time": event["start-time-(normal)"],
+                        "away-team-name": event["away_team_name"],
+                        "varsity-sport": event["varsity"]
+                    })
+                except KeyError:
+                    child_ref.set({
+                        "sport": event["sport"],
+                        "home-score": 0,
+                        "away-score": 0,
+                        "start-time": event["start-time-(normal)"],
+                        "away-team-name": event["away_team_name"],
+                        "varsity-sport": event["varsity"]
+                    })
 
 
 def init_calendar_section():
