@@ -59,7 +59,7 @@ def update_status_database(cleaned_data, current_hour):
                 got_data += 1
             if got_data != 0:
                 ref = db.reference("field-information")
-                child_ref = ref.child("/field-status/" + field_name)
+                child_ref = ref.child("field-status/" + field_name)
                 current_ref = child_ref.get()
                 try: 
                     if current_ref["home-score"] != type(0) or current_ref["away-score"] != type(0):
