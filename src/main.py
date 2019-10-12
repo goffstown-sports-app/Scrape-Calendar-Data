@@ -2,7 +2,6 @@ from datetime import datetime
 from time import sleep
 import firebase_admin
 from firebase_admin import credentials
-import json
 from os import system
 
 import database
