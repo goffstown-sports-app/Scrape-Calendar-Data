@@ -1,2 +1,1 @@
-firebase_admin==3.0.0
 ghsTools==0.1
