@@ -3,6 +3,7 @@ from time import sleep
 import firebase_admin
 from firebase_admin import credentials
 from os import system
+from ghsTools import ghsTools
 
 import database
 import calendar_actions as CA
@@ -24,8 +25,8 @@ def main():
     number_of_requests = 1
     while True:
         time_diff = 180
-        database.set_monitoring_info(True, time_diff)
-        database.update_pulse(number_of_requests, "Scrape-Calendar-Data")
+        ghsTools().update_pulse(number_of_requests, "Scrape-Calendar-Data")
+        ghsTools().set_monitoring_info(True, time_diff, "Scrape-Calendar-Data")
         datetime_now = datetime.now()
         print("Making request")
         initial_response = CA.get_events_for_day(
