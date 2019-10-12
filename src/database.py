@@ -121,19 +121,3 @@ def update_calendar_section(list_of_events):
         })
     child_ref2 = ref.child("tday-information")
     child_ref2.set({"number-of-events": len(list_of_events)})
-
-
-def set_monitoring_info(email_notifications, pulse_time_diff_secs):
-    """Updates the monitoring section for this micro service
-
-    Arguments:
-        email_notifications {bool} -- if the user should get email notifications
-        pulse_time_diff_secs {int} -- amount of seconds between each pulse (exact)
-    """
-    ref = db.reference("db-info/monitoring/Scrape-Calendar-Data")
-    ref_set = {
-        "email-notification": email_notifications,
-        "pulse-time-diffs-(secs)": pulse_time_diff_secs + 300,
-        "pulse-time-diffs-exact-(secs)": pulse_time_diff_secs
-    }
-    ref.set(ref_set)
