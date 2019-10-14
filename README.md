@@ -21,7 +21,7 @@
 
 ## Description
 
-This application scrapes the ![Goffstown Athletics Calendar](https://goffstownathletics.com/main/calendar/) for event information and uploads it to the database. It uploads this data so the Raspberry Pi getting information from the scoreboard knows if there is an event going on at the field - i.e. should it be recording or not. This program is currently running in a Docker container on a Raspberry Pi.
+This application scrapes the [Goffstown Athletics Calendar](https://goffstownathletics.com/main/calendar/) for event information and uploads it to the database. It uploads this data so the Raspberry Pi getting information from the scoreboard knows if there is an event going on at the field - i.e. should it be recording or not. This program is currently running in a Docker container on a Raspberry Pi.
 
 ## Features
 
