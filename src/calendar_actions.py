@@ -41,10 +41,7 @@ def get_events_for_day(day, month, year):
         return None
     elif resp == {'message': 'Flag On the Play!', 'detail': 'Do not worry, we are now checking this.'}:
         return None
-    elif type(resp) == type({}):
-        return resp
-    else:
-        return None
+    return resp
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))
