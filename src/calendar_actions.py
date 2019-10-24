@@ -33,15 +33,16 @@ def get_events_for_day(day, month, year):
         'referer': 'https://goffstownathletics.com/main/calendar/',
     }
     session = requests.Session()
-    req = requests.Request('POST', url, data=data, headers=headers)
+    req = requests.Request('GET', url, data=data, headers=headers)
     prepped = session.prepare_request(req)
     resp = session.send(prepped).json()
     session.close()
     if len(resp) == 0:
         return None
-    if resp == {'message': 'Flag On the Play!', 'detail': 'Do not worry, we are now checking this.'}:
+    elif resp == {'message': 'Flag On the Play!', 'detail': 'Do not worry, we are now checking this.'}:
         return None
-    return resp
+    else:
+        return resp
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))
@@ -70,6 +71,7 @@ def cleaning_response(json_data, day, month, year):
                 pass
             elif "practice" in event["eventType"].lower() or "scrimmage" in event["eventType"].lower():
                 pass
+            elif "spirt" in event[""]
             else:
                 event_amount += 1
                 if event["isCancelled"] == 0:
