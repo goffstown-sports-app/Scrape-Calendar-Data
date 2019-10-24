@@ -41,8 +41,10 @@ def get_events_for_day(day, month, year):
         return None
     elif resp == {'message': 'Flag On the Play!', 'detail': 'Do not worry, we are now checking this.'}:
         return None
-    else:
+    elif type(resp) == type({}):
         return resp
+    else:
+        return None
 
 # Testing:
 # print(get_events_for_day(6, 6, 2019))
@@ -71,7 +73,8 @@ def cleaning_response(json_data, day, month, year):
                 pass
             elif "practice" in event["eventType"].lower() or "scrimmage" in event["eventType"].lower():
                 pass
-            elif "spirt" in event[""]
+            elif "spirt" in event["theTitle"].lower():
+                pass 
             else:
                 event_amount += 1
                 if event["isCancelled"] == 0:
