@@ -33,7 +33,7 @@ def get_events_for_day(day, month, year):
         'referer': 'https://goffstownathletics.com/main/calendar/',
     }
     session = requests.Session()
-    req = requests.Request('GET', url, data=data, headers=headers)
+    req = requests.Request('POST', url, data=data, headers=headers)
     prepped = session.prepare_request(req)
     resp = session.send(prepped).json()
     session.close()
@@ -44,7 +44,7 @@ def get_events_for_day(day, month, year):
     return resp
 
 # Testing:
-# print(get_events_for_day(6, 6, 2019))
+# print(get_events_for_day(9, 17, 2019))
 
 
 def cleaning_response(json_data, day, month, year):
@@ -61,7 +61,7 @@ def cleaning_response(json_data, day, month, year):
     """
     #  Cleaning Data:
     if json_data is None:
-        return None
+        return json_data
     else:
         event_amount = 0
         clean_events = []
