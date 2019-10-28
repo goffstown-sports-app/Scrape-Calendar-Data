@@ -9,6 +9,7 @@ COPY dev-requirements.txt dev-requirements.txt
 RUN pip install -r dev-requirements.txt
 
 COPY /src /src
+COPY /tests /tests
 
-WORKDIR /src/tests
+WORKDIR /tests
 CMD ["pytest", "--emoji"]
