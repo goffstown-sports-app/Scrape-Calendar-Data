@@ -1,15 +1,21 @@
-FROM python:3.6-stretch
+# Base image
+FROM arm32v7/python:3.6-stretch
+
+# Meta for Docker Hub
+MAINTAINER matthewgleich@gmail.com
 
 # Fixing timezone:
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# Install Depencies
+COPY requirements.txt /requirements.txt
+RUN pip3 install -r requirements.txt
 
-COPY dev-requirements.txt dev-requirements.txt
-RUN pip install -r dev-requirements.txt
-
+# Copying over files
 COPY /src /src
-COPY /tests /tests
+RUN find . -name \*.json -type f -delete
+WORKDIR /src
 
-WORKDIR /tests
-CMD ["pytest", "--emoji"]
+# Running program
+CMD ["python3", "main.py"]
