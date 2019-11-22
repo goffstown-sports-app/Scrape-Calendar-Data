@@ -2,7 +2,7 @@
 FROM arm32v7/python:3.6-stretch
 
 # Meta for Docker Hub
-MAINTAINER matthewgleich@gmail.com
+LABEL author matthewgleich@gmail.com
 
 # Fixing timezone:
 ENV TZ=America/New_York
