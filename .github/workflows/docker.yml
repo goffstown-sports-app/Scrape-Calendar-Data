@@ -9,6 +9,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Piping Secrets
         run: |
+          echo ${{ secrets.firebase_creds }} >> src/secrets/firestore_creds.json
           echo ${{ secrets.firebase_creds }} >> tests/firestore_creds.json
       - name: Building Image
         run: |
