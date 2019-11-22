@@ -1,5 +1,5 @@
 # Base image
-FROM jfloff/alpine-python:3.6
+FROM arm32v7/python:3.6-stretch
 
 # Meta for Docker Hub
 MAINTAINER matthewgleich@gmail.com
