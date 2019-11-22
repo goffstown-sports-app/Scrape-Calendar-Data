@@ -1,8 +1,6 @@
 # Base image
 FROM jfloff/alpine-python:3.6
 
-# Meta for Docker Hub
-MAINTAINER matthewgleich@gmail.com
 
 # Fixing timezone:
 ENV TZ=America/New_York
