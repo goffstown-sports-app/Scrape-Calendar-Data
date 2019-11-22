@@ -16,7 +16,7 @@ jobs:
           docker build -f dev.Dockerfile -t ghsapp/scrape-calendar-data:dev .
       - name: Testing Image
         run: |
-          docker run -v /src/secrets:/src/secrets -e CI=true ghsapp/scrape-calendar-data
+          docker run -v /src/secrets:/src/secrets -e CI=true ghsapp/scrape-calendar-data:dev
       - name: Building and Testing Production Image
         run: |
           docker-compose up -d
