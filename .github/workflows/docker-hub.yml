@@ -1,5 +1,8 @@
 name: Docker-Hub 
-on: [push]
+on: 
+  push:
+    branches:
+    - master
     
 jobs:
   test:
@@ -15,6 +18,7 @@ jobs:
           docker build -t ghsapp/scrape-calendar-data .
       - name: Building ARM Image
         run: |
+          sudo apt-get install -y qemu qemu-user-static qemu-user binfmt-support
           docker build -f arm.Dockerfile -t ghsapp/scrape-calendar-data:arm32v7 .
       - name: Testing Production Image
         run: |
