@@ -1,8 +1,5 @@
 name: Docker-Hub 
-on:
-  push:
-    branches:
-    - master
+on: [push]
     
 jobs:
   test:
@@ -16,6 +13,9 @@ jobs:
       - name: Building Production Image
         run: |
           docker build -t ghsapp/scrape-calendar-data .
+      - name: Building ARM Image
+        run: |
+          docker build -f arm.Dockerfile -t ghsapp/scrape-calendar-data:arm32v7 .
       - name: Testing Production Image
         run: |
           echo ${{ secrets.firebase_creds }} >> src/secrets/firestore_creds.json
@@ -25,3 +25,4 @@ jobs:
       - name: Pushing to Docker Hub
         run: |
           docker push ghsapp/scrape-calendar-data
+          docker push ghsapp/scrape-calendar-data:arm32v7
