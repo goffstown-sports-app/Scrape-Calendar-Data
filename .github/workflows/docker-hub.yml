@@ -18,7 +18,7 @@ jobs:
           docker build -t ghsapp/scrape-calendar-data .
       - name: Building Arm Image
         run: |
-          apt-get install qemu qemu-user-static binfmt-support -y
+          sudo apt-get install qemu qemu-user-static binfmt-support -y
           docker build -f arm.Dockerfile -t ghsapp/scrape-calendar-data:arm32v7 .
       - name: Testing Production Image
         run: |
