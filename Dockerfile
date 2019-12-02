@@ -1,5 +1,5 @@
 # Base image
-FROM jfloff/alpine-python:3.6
+FROM python:3.6-stretch
 
 # Meta for Docker Hub
 LABEL author matthewgleich@gmail.com
