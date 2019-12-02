@@ -1,7 +1,7 @@
 # Pytest Cache
 .pytest_cache
 
-# Firebase Auth:
+# Firebase Token:
 firestore_creds.json
 
 # IDEA IDE Settings:
