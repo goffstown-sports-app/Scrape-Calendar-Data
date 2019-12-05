@@ -44,6 +44,10 @@ Once you have installed the requirements, you can now run the program! You run t
 
 `python main.py`
 
+If you are using docker, then run:
+
+`docker-compose up -d`
+
 ## Docker Images
 
 | Image Tag                                                                                         | Image Description                                  |
