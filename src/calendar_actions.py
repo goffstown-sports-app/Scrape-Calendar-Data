@@ -71,7 +71,7 @@ def cleaning_response(json_data, day, month, year):
             elif "practice" in event["eventType"].lower() or "scrimmage" in event["eventType"].lower():
                 pass
             elif "spirit" in event["theTitle"].lower():
-                pass 
+                pass
             else:
                 event_amount += 1
                 if event["isCancelled"] == 0:
