@@ -31,7 +31,7 @@ def main():
         print("Making request")
         initial_response = CA.get_events_for_day(
             datetime_now.day, datetime_now.month, datetime_now.year)
-        print(initial_response,"\n")
+        print(initial_response, "\n")
         cleaned_response = CA.cleaning_response(
             initial_response, datetime_now.day, datetime_now.month, datetime_now.year)
         print(cleaned_response, "\n")
@@ -43,7 +43,8 @@ def main():
                 "football-field"
             ])
         if cleaned_response != None:
-            database.update_status_database(cleaned_response, datetime_now.hour)
+            database.update_status_database(
+                cleaned_response, datetime_now.hour)
             database.update_calendar_section(cleaned_response)
         number_of_requests += 1
         sleep(time_diff)
