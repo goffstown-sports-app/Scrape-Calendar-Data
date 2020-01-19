@@ -61,7 +61,7 @@ def update_status_database(cleaned_data, current_hour):
                 ref = db.reference("field-information")
                 child_ref = ref.child("field-status/" + field_name)
                 current_ref = child_ref.get()
-                try: 
+                try:
                     if current_ref["home-score"] != type(0) or current_ref["away-score"] != type(0):
                         raise KeyError("Isn't Int")
                     child_ref.set({
