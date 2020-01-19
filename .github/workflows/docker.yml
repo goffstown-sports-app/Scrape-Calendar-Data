@@ -4,7 +4,7 @@ on: [push, pull_request, release]
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v1
       - name: Piping Secrets
