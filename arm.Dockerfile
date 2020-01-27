@@ -14,9 +14,9 @@ COPY requirements.txt /requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Copying over files
-COPY /src /src
+COPY /scrapeCalendarData /scrapeCalendarData
 RUN find . -name \*.json -type f -delete
-WORKDIR /src
+WORKDIR /scrapeCalendarData
 
 # Running program
 CMD ["python3", "main.py"]
