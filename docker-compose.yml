@@ -5,4 +5,4 @@ services:
     container_name: scrape-calendar-data
     build: .
     volumes:
-      - /src/secrets:/src/secrets
+      - /scrapeCalendarData/secrets:/scrapeCalendarData/secrets
